@@ -33,7 +33,7 @@ class DemoViewController: UIViewController {
         vc.didMove(toParent: self)
         
         swiftUIDebugView = debugView
-        UIPresentCoordinator.suspendInterruptDefaultAlert = true
+        UIPresentCoordinator.shared.suspendInterruptDefaultAlert = true
         
     }
     
@@ -155,7 +155,7 @@ struct DebugView: View {
         }
         _ = sheetTask.content {
             AnyView(
-                Text("Hello")
+                Text("SwiftUI + Sheet")
             )
         }
     }
