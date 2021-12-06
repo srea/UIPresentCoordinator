@@ -32,4 +32,8 @@ struct Queue<T> {
     func peek() -> T? {
         elements.first
     }
+    
+    func count() -> Int {
+        elements.count
+    }
 }

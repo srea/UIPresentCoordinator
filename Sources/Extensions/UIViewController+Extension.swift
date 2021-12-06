@@ -27,7 +27,7 @@ extension UIViewController {
                       #selector(UIViewController._present_coordinator_viewDidDisappear(_:)))
     }
     
-    public func presentQueue(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+    public func presentQueue(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
         UIPresentCoordinator.shared.enqueue(viewController, animated: animated, completion: completion)
     }
     

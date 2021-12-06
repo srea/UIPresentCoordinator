@@ -9,142 +9,189 @@ import UIKit
 import SwiftUI
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var button: UIButton!
+    
+    @IBOutlet weak var queueItemLabel: UILabel!
+    
+    private var swiftUIDebugView: DebugView?
+    
+    @IBOutlet weak var swiftUIView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let aaa = AAA.init { [weak self] in
-            self?.didTap(())
-        }
+        watchQueue()
+        
+        let debugView = DebugView.init {  }
 
-        let vc = UIHostingController.init(rootView: aaa)
-        vc.view.frame = .init(x: 0, y: 0, width: 200, height: 300)
+        let vc = UIHostingController.init(rootView: debugView)
         addChild(vc)
-        view.addSubview(vc.view)
+        swiftUIView.addSubview(vc.view)
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        vc.view.pinEdges(to: swiftUIView)
+        
         vc.didMove(toParent: self)
+        
+        swiftUIDebugView = debugView
+        UIPresentCoordinator.suspendInterruptDefaultAlert = true
         
     }
     
-    private func showModalAfter3() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            let alert = UIAlertController.init(title: "UIKit Async 3 sec", message: "UIAlertController", preferredStyle: .alert)
-            alert.addAction(.init(title: "close", style: .default, handler: { _ in
-                // do stuff
-            }))
-            self.presentQueue(alert, animated: true) {
-                print("completion 1")
+    private func watchQueue() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.queueItemLabel.text = "Waiting items: \(UIPresentCoordinator.shared.waitingItems) "
+            self?.watchQueue()
+        }
+    }
+    
+    // Interrupt
+    
+    @IBAction func showUIKitAlert(_ sender: Any) {
+        showUIKit(style: .alert, useQueue: false)
+    }
+    
+    @IBAction func showUIKitSheet(_ sender: Any) {
+        showUIKitPresent(useQueue: false)
+    }
+    
+    // Queue
+    
+    @IBAction func showUIKitAlertQueue(_ sender: Any) {
+        showUIKit(style: .alert, useQueue: true)
+    }
+    
+    @IBAction func showUIKitSheetQueue(_ sender: Any) {
+        showUIKitPresent(useQueue: true)
+    }
+
+    // Common
+    
+    private func showUIKit(style: UIAlertController.Style, useQueue: Bool) {
+        let alert = UIAlertController.init(
+            title: "UIKit",
+            message: "\(useQueue ? "Queue" : "Interrupt")",
+            preferredStyle: style)
+        alert.addAction(.init(title: "close", style: .default, handler: nil))
+        
+        if useQueue {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
+                self?.presentQueue(alert, animated: true, completion: nil)
             }
+        } else {
+            present(alert, animated: true, completion: nil)
         }
     }
 
-    @IBAction func didTap(_ sender: Any) {
-        
-        let alert = UIAlertController.init(title: "UIKit", message: "UIAlertController", preferredStyle: .alert)
-        
-        alert.addAction(.init(title: "close", style: .default, handler: { _ in
-            // do stuff
-        }))
-        alert.addAction(.init(title: "show modal after 3", style: .destructive, handler: { [weak self] _ in
-            self?.showModalAfter3()
-        }))
-        
-        presentQueue(alert, animated: true) {
-            print("completion 1")
-        }
-        
-        let vc = UIViewController.init()
-        vc.view.backgroundColor = .red
+    private func showUIKitPresent(useQueue: Bool) {
+        let viewController = UIViewController.init()
+        viewController.view.backgroundColor = .yellow
 
-        presentQueue(vc, animated: true) {
-            print("completion 2")
-        }
-        
-        let vc2 = AViewController.init()
-        vc2.view.backgroundColor = .blue
-
-        presentQueue(vc2, animated: true) {
-            print("completion 2")
-        }
-
-        
-        let alert2 = UIAlertController.init(title: "UIKit", message: "UIAlertController", preferredStyle: .actionSheet)
-        
-        alert2.addAction(.init(title: "ok", style: .default, handler: { _ in
-            // do stuff
-        }))
-        
-        presentQueue(alert2, animated: true) {
-            print("completion 3")
+        if useQueue {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
+                self?.presentQueue(viewController, animated: true, completion: nil)
+            }
+        } else {
+            present(viewController, animated: true, completion: nil)
         }
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            // Debug: Queueを削除
-            UIPresentCoordinator.shared.flush()
+            confirmFlushQueue()
         }
+    }
+    
+    private func confirmFlushQueue() {
+        let alert = UIAlertController.init(title: "Confirm", message: "Flush queue?", preferredStyle: .actionSheet)
+        
+        alert.addAction(.init(title: "ok", style: .destructive, handler: { _ in
+            UIPresentCoordinator.shared.flush()
+        }))
+        
+        alert.addAction(.init(title: "cancel", style: .default, handler: { _ in
+        }))
+
+        presentQueue(alert, animated: true)
     }
     
 }
 
-struct AAA: View {
+struct DebugView: View {
     
     private let presentCoordinator: UIPresentable = UIPresentCoordinator.shared
 
-    // タスクを用意
+    // Interrupt
+    @State private var isPresentedAlert = false
+    @State private var isPresentedSheet = false
+    
+    // Queue
     @ObservedObject private var alertTask = Task<Alert>()
     @ObservedObject private var sheetTask = Task<AnyView>()
     @ObservedObject private var listAlertTask = Task<Alert>()
 
-    private let didTap: (()->Void)?
+    private let showAlert: (()->Void)?
     
-    init(didTap: (()->Void)?) {
-        self.didTap = didTap
-        alertTask.content {
-            Alert(title: Text("ポケモン名"),
-                  message: Text("ピカチュウ"),
-                  dismissButton: .default(Text("閉じる")))
+    mutating func showSwiftUIAlert() {
+        self.isPresentedAlert = true
+//        self.presentCoordinator.enqueue(.alert(alertTask))
+    }
+
+    init(showAlert: (()->Void)?) {
+        self.showAlert = showAlert
+        _ = alertTask.content {
+            Alert(title: Text("SwiftUI + Alert"))
         }
-        listAlertTask.content {
+        _ = listAlertTask.content {
             Alert(title: Text("List Button"))
+        }
+        _ = sheetTask.content {
+            AnyView(
+                Text("Hello")
+            )
         }
     }
     
     var body: some View {
 
-        VStack {
-            // 画面遷移先
-            Button(action: {
-                presentCoordinator.enqueue(.view(sheetTask.content {
-                    AnyView.init(
-                        Button {
-                            presentCoordinator.enqueue(.alert(listAlertTask))
-                            sheetTask.isPresented.toggle()
-                        } label: {
-                            Text("Alert Enqueue")
-                        }
-                    )
-                }))
-            }) {
-                Text("Show Sheet Enqueue")
+        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8) {
+            // Interrupt
+            Text("Interrupt")
+            
+            // Alert
+            Button("Show SwiftUI + Alert", action: {
+                self.isPresentedAlert = true
+            })
+            .alert(isPresented: self.$isPresentedAlert) {
+                Alert(title: Text("SwiftUI + Alert"))
             }
+            
+            // Sheet
+            Button("Show SwiftUI + Sheet", action: {
+                self.isPresentedSheet = true
+            })
+            .sheet(isPresented: $isPresentedSheet) {
+            } content: {
+                Text("Hello")
+            }
+
+            Text("Queue")
+            
+            Button("Show SwiftUI + Alert", action: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+                    presentCoordinator.enqueue(.alert(alertTask))
+                }
+            })
+            .alert(isPresented: $alertTask.isPresented) {
+                presentCoordinator.dequeue()
+            }
+            
+            Button("Show SwiftUI + Sheet", action: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+                    presentCoordinator.enqueue(.view(sheetTask))
+                }
+            })
             .sheet(isPresented: $sheetTask.isPresented) {
             } content: {
                 presentCoordinator.dequeue()
-            }
-
-            // ボタン
-            Button(action: {
-//                self.didTap?()
-                self.presentCoordinator.enqueue(.alert(alertTask))
-//                self.didTap?()
-            }) {
-                Text("Alert Enqueue")
-            }
-            .alert(isPresented: $alertTask.isPresented) {
-                self.presentCoordinator.dequeue()
             }
 
             // リストボタン
@@ -160,5 +207,14 @@ struct AAA: View {
                 self.presentCoordinator.dequeue()
             }
         }
+    }
+}
+
+extension UIView {
+    func pinEdges(to other: UIView) {
+        leadingAnchor.constraint(equalTo: other.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: other.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: other.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = true
     }
 }

@@ -25,6 +25,12 @@ final class UIPresentCoordinator: ObservableObject, UIPresentable {
     
     static let shared = UIPresentCoordinator.init()
 
+    static var suspendInterruptDefaultAlert: Bool = true
+    
+    public var waitingItems: Int {
+        queue.count()
+    }
+    
     private var isPresenting: Bool = false
     private var queue = Queue<PresentingType>()
 
@@ -58,6 +64,14 @@ final class UIPresentCoordinator: ObservableObject, UIPresentable {
         }
 
         guard let item = queue.peek() else {
+            return
+        }
+
+        guard let topViewController = UIWindow.key?.topViewController() else {
+            return
+        }
+
+        if Self.suspendInterruptDefaultAlert && topViewController is UIAlertController {
             return
         }
 

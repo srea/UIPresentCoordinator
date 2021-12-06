@@ -15,7 +15,6 @@
 		20EC4F4F2757B5E400E7E0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4F4D2757B5E400E7E0D3 /* LaunchScreen.storyboard */; };
 		20EC4F5A2757B5E400E7E0D3 /* UI_QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F592757B5E400E7E0D3 /* UI_QueueTests.swift */; };
 		20EC4F652757B5E400E7E0D3 /* UI_QueueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F642757B5E400E7E0D3 /* UI_QueueUITests.swift */; };
-		20EC4F8027588E7700E7E0D3 /* AViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F7F27588E7700E7E0D3 /* AViewController.swift */; };
 		20EC4F8B2759246000E7E0D3 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F842759246000E7E0D3 /* UIWindow+Extension.swift */; };
 		20EC4F8C2759246000E7E0D3 /* UIPresentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F852759246000E7E0D3 /* UIPresentCoordinator.swift */; };
 		20EC4F8D2759246000E7E0D3 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F862759246000E7E0D3 /* UIViewController+Extension.swift */; };
@@ -57,7 +56,6 @@
 		20EC4F602757B5E400E7E0D3 /* UI QueueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI QueueUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4F642757B5E400E7E0D3 /* UI_QueueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_QueueUITests.swift; sourceTree = "<group>"; };
 		20EC4F662757B5E400E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20EC4F7F27588E7700E7E0D3 /* AViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AViewController.swift; sourceTree = "<group>"; };
 		20EC4F842759246000E7E0D3 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		20EC4F852759246000E7E0D3 /* UIPresentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinator.swift; sourceTree = "<group>"; };
 		20EC4F862759246000E7E0D3 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				20EC4F422757B5E300E7E0D3 /* AppDelegate.swift */,
 				20EC4F442757B5E300E7E0D3 /* SceneDelegate.swift */,
 				20EC4F462757B5E300E7E0D3 /* ViewController.swift */,
-				20EC4F7F27588E7700E7E0D3 /* AViewController.swift */,
 				20EC4F482757B5E300E7E0D3 /* Main.storyboard */,
 				20EC4F4B2757B5E400E7E0D3 /* Assets.xcassets */,
 				20EC4F4D2757B5E400E7E0D3 /* LaunchScreen.storyboard */,
@@ -149,9 +146,8 @@
 		20EC4F832759246000E7E0D3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				20EC4F842759246000E7E0D3 /* UIWindow+Extension.swift */,
+				20EC4FA3275DB2A600E7E0D3 /* Extensions */,
 				20EC4F852759246000E7E0D3 /* UIPresentCoordinator.swift */,
-				20EC4F862759246000E7E0D3 /* UIViewController+Extension.swift */,
 				20EC4F872759246000E7E0D3 /* PresentingType.swift */,
 				20EC4F882759246000E7E0D3 /* UIKitPresentTask.swift */,
 				20EC4F892759246000E7E0D3 /* Queue.swift */,
@@ -159,6 +155,15 @@
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
+		};
+		20EC4FA3275DB2A600E7E0D3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				20EC4F842759246000E7E0D3 /* UIWindow+Extension.swift */,
+				20EC4F862759246000E7E0D3 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -291,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				20EC4F8E2759246000E7E0D3 /* PresentingType.swift in Sources */,
-				20EC4F8027588E7700E7E0D3 /* AViewController.swift in Sources */,
 				20EC4F912759246000E7E0D3 /* SwiftUIPresentTask.swift in Sources */,
 				20EC4F8B2759246000E7E0D3 /* UIWindow+Extension.swift in Sources */,
 				20EC4F8C2759246000E7E0D3 /* UIPresentCoordinator.swift in Sources */,
