@@ -971,7 +971,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/srea/UIPresentCoordinator";
 			requirement = {
-				branch = "feature/support-swiftpm";
+				branch = main;
 				kind = branch;
 			};
 		};

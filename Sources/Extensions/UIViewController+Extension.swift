@@ -11,7 +11,7 @@ extension UIViewController {
     
     private static var _present_coordinator_at_once = true
     
-    public static func present_coordinator_swizzle() {
+    internal static func present_coordinator_swizzle() {
         guard Self._present_coordinator_at_once else {
             return
         }

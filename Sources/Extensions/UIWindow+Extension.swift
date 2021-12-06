@@ -7,7 +7,7 @@
 
 import UIKit
 
-public extension UIWindow {
+internal extension UIWindow {
     static var key: UIWindow? {
         UIApplication.shared.connectedScenes
             .filter { $0.activationState != .unattached }
