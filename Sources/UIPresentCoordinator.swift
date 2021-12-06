@@ -38,11 +38,45 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
     private var isSuspended: Bool = false
     private var isPresenting: Bool = false
     private var queue = Queue<PresentingType>()
+    
+    private weak var storeKitWindow: AnyObject?
 
     public init() {
         UIViewController.present_coordinator_swizzle()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(windowDidBecomeVisible(notification:)),
+                                               name: UIWindow.didBecomeVisibleNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(windowDidBecomeHidden(notification:)),
+                                               name: UIWindow.didBecomeHiddenNotification,
+                                               object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func windowDidBecomeVisible(notification: Notification) {
+        guard let window = notification.object else {
+            return
+        }
+        let className = String(describing: type(of: window))
+        
+        if className.contains("SKStoreReviewPresentationWindow") {
+            storeKitWindow = notification.object as AnyObject
+        }
+    }
+    
+    @objc func windowDidBecomeHidden(notification: Notification) {
+        guard let window = notification.object else {
+            return
+        }
+        let className = String(describing: type(of: window))
+    }
+
     public func flush() {
         queue.clearAll()
     }
@@ -64,31 +98,34 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
     }
     
     private func handleNextQueue() {
-        guard !isSuspended else {
-            return
-        }
-        guard !isPresenting else {
-            return
-        }
-        guard let item = queue.peek() else {
-            return
-        }
-        guard let topViewController = UIWindow.key?.topViewController() else {
-            return
-        }
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            guard self.storeKitWindow == nil else {
+                return
+            }
+            guard !self.isSuspended else {
+                return
+            }
+            guard !self.isPresenting else {
+                return
+            }
+            guard let item = self.queue.peek() else {
+                return
+            }
+            guard let topViewController = UIWindow.key?.topViewController() else {
+                return
+            }
 
-        if suspendInterruptDefaultAlert && topViewController is UIAlertController {
-            return
-        }
-        
-        // Store Review
-        if String.init(describing: topViewController).contains("SKRemoteReviewController") {
-            return
-        }
+            if self.suspendInterruptDefaultAlert && topViewController is UIAlertController {
+                return
+            }
 
-        isPresenting = true
+            self.isPresenting = true
 
-        item.show()
+            item.show()
+        }
     }
     
     public func suspend() {

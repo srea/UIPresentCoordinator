@@ -9,8 +9,13 @@ import UIKit
 import SwiftUI
 import UIPresentCoordinator
 import StoreKit
+import UserNotifications
+import AppTrackingTransparency
+import CoreLocation
 
 class DemoViewController: UIViewController {
+    
+    private let locationManager = CLLocationManager()
     
     @IBOutlet weak var queueItemLabel: UILabel!
     
@@ -57,7 +62,6 @@ class DemoViewController: UIViewController {
     
     @IBAction func showUIKitAlert(_ sender: Any) {
         showUIKit(style: .alert, useQueue: false)
-        requestReview()
     }
     
     @IBAction func showUIKitSheet(_ sender: Any) {
@@ -72,6 +76,22 @@ class DemoViewController: UIViewController {
     
     @IBAction func showUIKitSheetQueue(_ sender: Any) {
         showUIKitPresent(useQueue: true)
+    }
+
+    @IBAction func requestReviewDidTap(_ sender: Any) {
+        requestReview()
+    }
+
+    @IBAction func requestRemoteNotificationDidTap(_ sender: Any) {
+        requestAPNS()
+    }
+    
+    @IBAction func requestIDFADidTap(_ sender: Any) {
+        requestIDFA()
+    }
+
+    @IBAction func requestLocation(_ sender: Any) {
+        requestGPS()
     }
 
     // Common
@@ -97,7 +117,27 @@ class DemoViewController: UIViewController {
             SKStoreReviewController.requestReview(in: scene)
         }
     }
+    
+    private func requestAPNS() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {(granted, error) in
+            if granted {
+                DispatchQueue.main.async() {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        })
+    }
+    
+    private func requestIDFA() {
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+          print(status)
+        })
+    }
 
+    private func requestGPS() {
+        locationManager.requestAlwaysAuthorization()
+    }
+    
     private func showUIKitPresent(useQueue: Bool) {
         let viewController = UIViewController.init()
         viewController.view.backgroundColor = .white
