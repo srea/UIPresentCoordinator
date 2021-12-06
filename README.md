@@ -3,6 +3,10 @@ Controls interrupt handling, such as alert views, and is compatible with UIKit a
 
 ## Installation
 
+### SwiftPM
+
+- File > Swift Packages > Add Package Dependency...
+- Add `https://github.com/srea/UIPresentCoordinator`
 
 ## Usage
 
