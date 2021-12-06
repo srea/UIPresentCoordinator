@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import UIPresentCoordinator
 
-class ViewController: UIViewController {
+class DemoViewController: UIViewController {
     
     @IBOutlet weak var queueItemLabel: UILabel!
     
@@ -35,6 +35,14 @@ class ViewController: UIViewController {
         swiftUIDebugView = debugView
         UIPresentCoordinator.suspendInterruptDefaultAlert = true
         
+    }
+    
+    @IBAction func suspendSwitchDidChange(_ sender: UISwitch) {
+        if sender.isOn {
+            UIPresentCoordinator.shared.suspend()
+        } else {
+            UIPresentCoordinator.shared.resume()
+        }
     }
     
     private func watchQueue() {
@@ -119,7 +127,7 @@ class ViewController: UIViewController {
 
 struct DebugView: View {
     
-    private let presentCoordinator: UIPresentable = UIPresentCoordinator.shared
+    private let presentCoordinator: UIPresentCoordinatable = UIPresentCoordinator.shared
 
     // Interrupt
     @State private var isPresentedAlert = false
@@ -172,7 +180,7 @@ struct DebugView: View {
             })
             .sheet(isPresented: $isPresentedSheet) {
             } content: {
-                Text("Hello")
+                Text("SwiftUI + Sheet")
             }
 
             Text("Queue")
