@@ -21,13 +21,6 @@
 		20EC4FBE275E21C500E7E0D3 /* UIPresentCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */; };
 		20EC4FBF275E21C500E7E0D3 /* UIPresentCoordinator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20EC4FDB275E235D00E7E0D3 /* UIPresentCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 20EC4FDA275E235D00E7E0D3 /* UIPresentCoordinator */; };
-		20EC4FEC275E240800E7E0D3 /* UIKitPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE2275E23F600E7E0D3 /* UIKitPresentTask.swift */; };
-		20EC4FED275E240800E7E0D3 /* PresentingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE1275E23F600E7E0D3 /* PresentingType.swift */; };
-		20EC4FEE275E240800E7E0D3 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE3275E23F600E7E0D3 /* Queue.swift */; };
-		20EC4FEF275E240800E7E0D3 /* SwiftUIPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE4275E23F600E7E0D3 /* SwiftUIPresentTask.swift */; };
-		20EC4FF0275E240D00E7E0D3 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FDF275E23F500E7E0D3 /* UIWindow+Extension.swift */; };
-		20EC4FF1275E240D00E7E0D3 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE0275E23F600E7E0D3 /* UIViewController+Extension.swift */; };
-		20EC4FF2275E241000E7E0D3 /* UIPresentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FDD275E23F500E7E0D3 /* UIPresentCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,13 +96,6 @@
 		20EC4FB1275E21C400E7E0D3 /* UIPresentCoordinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIPresentCoordinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4FB8275E21C400E7E0D3 /* UIPresentCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinatorTests.swift; sourceTree = "<group>"; };
 		20EC4FBA275E21C400E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20EC4FDD275E23F500E7E0D3 /* UIPresentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinator.swift; sourceTree = "<group>"; };
-		20EC4FDF275E23F500E7E0D3 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
-		20EC4FE0275E23F600E7E0D3 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		20EC4FE1275E23F600E7E0D3 /* PresentingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentingType.swift; sourceTree = "<group>"; };
-		20EC4FE2275E23F600E7E0D3 /* UIKitPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitPresentTask.swift; sourceTree = "<group>"; };
-		20EC4FE3275E23F600E7E0D3 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		20EC4FE4275E23F600E7E0D3 /* SwiftUIPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPresentTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +143,6 @@
 		20EC4F362757B5E300E7E0D3 = {
 			isa = PBXGroup;
 			children = (
-				20EC4FDC275E23F500E7E0D3 /* Sources */,
 				20EC4F412757B5E300E7E0D3 /* Example */,
 				20EC4F582757B5E400E7E0D3 /* UI QueueTests */,
 				20EC4F632757B5E400E7E0D3 /* UI QueueUITests */,
@@ -227,28 +212,6 @@
 				20EC4FBA275E21C400E7E0D3 /* Info.plist */,
 			);
 			path = UIPresentCoordinatorTests;
-			sourceTree = "<group>";
-		};
-		20EC4FDC275E23F500E7E0D3 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				20EC4FDD275E23F500E7E0D3 /* UIPresentCoordinator.swift */,
-				20EC4FDE275E23F500E7E0D3 /* Extensions */,
-				20EC4FE1275E23F600E7E0D3 /* PresentingType.swift */,
-				20EC4FE2275E23F600E7E0D3 /* UIKitPresentTask.swift */,
-				20EC4FE3275E23F600E7E0D3 /* Queue.swift */,
-				20EC4FE4275E23F600E7E0D3 /* SwiftUIPresentTask.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		20EC4FDE275E23F500E7E0D3 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				20EC4FDF275E23F500E7E0D3 /* UIWindow+Extension.swift */,
-				20EC4FE0275E23F600E7E0D3 /* UIViewController+Extension.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,13 +449,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20EC4FF1275E240D00E7E0D3 /* UIViewController+Extension.swift in Sources */,
-				20EC4FED275E240800E7E0D3 /* PresentingType.swift in Sources */,
-				20EC4FF0275E240D00E7E0D3 /* UIWindow+Extension.swift in Sources */,
-				20EC4FEE275E240800E7E0D3 /* Queue.swift in Sources */,
-				20EC4FEF275E240800E7E0D3 /* SwiftUIPresentTask.swift in Sources */,
-				20EC4FEC275E240800E7E0D3 /* UIKitPresentTask.swift in Sources */,
-				20EC4FF2275E241000E7E0D3 /* UIPresentCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,7 +629,6 @@
 		20EC4F6A2757B5E400E7E0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -693,7 +648,6 @@
 		20EC4F6B2757B5E400E7E0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -851,7 +805,6 @@
 		20EC4FC5275E21C500E7E0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QWHX6X2C6N;
 				INFOPLIST_FILE = UIPresentCoordinatorTests/Info.plist;
@@ -871,7 +824,6 @@
 		20EC4FC6275E21C500E7E0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QWHX6X2C6N;
 				INFOPLIST_FILE = UIPresentCoordinatorTests/Info.plist;
