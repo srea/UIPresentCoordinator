@@ -15,12 +15,18 @@
 		20EC4F4F2757B5E400E7E0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20EC4F4D2757B5E400E7E0D3 /* LaunchScreen.storyboard */; };
 		20EC4F5A2757B5E400E7E0D3 /* UI_QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F592757B5E400E7E0D3 /* UI_QueueTests.swift */; };
 		20EC4F652757B5E400E7E0D3 /* UI_QueueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F642757B5E400E7E0D3 /* UI_QueueUITests.swift */; };
-		20EC4FB2275E21C400E7E0D3 /* UIPresentCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */; };
-		20EC4FB9275E21C400E7E0D3 /* UIPresentCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FB8275E21C400E7E0D3 /* UIPresentCoordinatorTests.swift */; };
-		20EC4FBB275E21C400E7E0D3 /* UIPresentCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 20EC4FAB275E21C400E7E0D3 /* UIPresentCoordinator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20EC4FBE275E21C500E7E0D3 /* UIPresentCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */; };
-		20EC4FBF275E21C500E7E0D3 /* UIPresentCoordinator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		20EC4FDB275E235D00E7E0D3 /* UIPresentCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 20EC4FDA275E235D00E7E0D3 /* UIPresentCoordinator */; };
+		20EC5001275E263800E7E0D3 /* UIPresentCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FF8275E263800E7E0D3 /* UIPresentCoordinator.framework */; };
+		20EC5008275E263900E7E0D3 /* UIPresentCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC5007275E263900E7E0D3 /* UIPresentCoordinatorTests.swift */; };
+		20EC500A275E263900E7E0D3 /* UIPresentCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 20EC4FFA275E263800E7E0D3 /* UIPresentCoordinator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20EC500D275E263900E7E0D3 /* UIPresentCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FF8275E263800E7E0D3 /* UIPresentCoordinator.framework */; };
+		20EC500E275E263900E7E0D3 /* UIPresentCoordinator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FF8275E263800E7E0D3 /* UIPresentCoordinator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20EC5025275E265F00E7E0D3 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC5018275E265500E7E0D3 /* UIWindow+Extension.swift */; };
+		20EC5026275E265F00E7E0D3 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC5019275E265500E7E0D3 /* UIViewController+Extension.swift */; };
+		20EC5027275E265F00E7E0D3 /* UIKitPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501B275E265500E7E0D3 /* UIKitPresentTask.swift */; };
+		20EC5028275E265F00E7E0D3 /* PresentingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501A275E265500E7E0D3 /* PresentingType.swift */; };
+		20EC5029275E265F00E7E0D3 /* SwiftUIPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */; };
+		20EC502A275E265F00E7E0D3 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501C275E265500E7E0D3 /* Queue.swift */; };
+		20EC502B275E266400E7E0D3 /* UIPresentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC5016275E265500E7E0D3 /* UIPresentCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,25 +44,25 @@
 			remoteGlobalIDString = 20EC4F3E2757B5E300E7E0D3;
 			remoteInfo = "UI Queue";
 		};
-		20EC4FB3275E21C400E7E0D3 /* PBXContainerItemProxy */ = {
+		20EC5002275E263800E7E0D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20EC4F372757B5E300E7E0D3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 20EC4FA8275E21C400E7E0D3;
+			remoteGlobalIDString = 20EC4FF7275E263800E7E0D3;
 			remoteInfo = UIPresentCoordinator;
 		};
-		20EC4FB5275E21C400E7E0D3 /* PBXContainerItemProxy */ = {
+		20EC5004275E263900E7E0D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20EC4F372757B5E300E7E0D3 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 20EC4F3E2757B5E300E7E0D3;
 			remoteInfo = "UI Queue";
 		};
-		20EC4FBC275E21C400E7E0D3 /* PBXContainerItemProxy */ = {
+		20EC500B275E263900E7E0D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20EC4F372757B5E300E7E0D3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 20EC4FA8275E21C400E7E0D3;
+			remoteGlobalIDString = 20EC4FF7275E263800E7E0D3;
 			remoteInfo = UIPresentCoordinator;
 		};
 /* End PBXContainerItemProxy section */
@@ -68,7 +74,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				20EC4FBF275E21C500E7E0D3 /* UIPresentCoordinator.framework in Embed Frameworks */,
+				20EC500E275E263900E7E0D3 /* UIPresentCoordinator.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,12 +96,23 @@
 		20EC4F602757B5E400E7E0D3 /* UI QueueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI QueueUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4F642757B5E400E7E0D3 /* UI_QueueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_QueueUITests.swift; sourceTree = "<group>"; };
 		20EC4F662757B5E400E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIPresentCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4FAB275E21C400E7E0D3 /* UIPresentCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPresentCoordinator.h; sourceTree = "<group>"; };
 		20EC4FAC275E21C400E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20EC4FB1275E21C400E7E0D3 /* UIPresentCoordinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIPresentCoordinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4FB8275E21C400E7E0D3 /* UIPresentCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinatorTests.swift; sourceTree = "<group>"; };
 		20EC4FBA275E21C400E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20EC4FF8275E263800E7E0D3 /* UIPresentCoordinator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIPresentCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20EC4FFA275E263800E7E0D3 /* UIPresentCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPresentCoordinator.h; sourceTree = "<group>"; };
+		20EC4FFB275E263800E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20EC5000275E263800E7E0D3 /* UIPresentCoordinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIPresentCoordinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20EC5007275E263900E7E0D3 /* UIPresentCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinatorTests.swift; sourceTree = "<group>"; };
+		20EC5009275E263900E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20EC5016275E265500E7E0D3 /* UIPresentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinator.swift; sourceTree = "<group>"; };
+		20EC5018275E265500E7E0D3 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		20EC5019275E265500E7E0D3 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		20EC501A275E265500E7E0D3 /* PresentingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentingType.swift; sourceTree = "<group>"; };
+		20EC501B275E265500E7E0D3 /* UIKitPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitPresentTask.swift; sourceTree = "<group>"; };
+		20EC501C275E265500E7E0D3 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPresentTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20EC4FBE275E21C500E7E0D3 /* UIPresentCoordinator.framework in Frameworks */,
+				20EC500D275E263900E7E0D3 /* UIPresentCoordinator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,19 +138,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20EC4FA6275E21C400E7E0D3 /* Frameworks */ = {
+		20EC4FF5275E263800E7E0D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20EC4FDB275E235D00E7E0D3 /* UIPresentCoordinator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20EC4FAE275E21C400E7E0D3 /* Frameworks */ = {
+		20EC4FFD275E263800E7E0D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20EC4FB2275E21C400E7E0D3 /* UIPresentCoordinator.framework in Frameworks */,
+				20EC5001275E263800E7E0D3 /* UIPresentCoordinator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,11 +159,14 @@
 		20EC4F362757B5E300E7E0D3 = {
 			isa = PBXGroup;
 			children = (
+				20EC5015275E265500E7E0D3 /* Sources */,
 				20EC4F412757B5E300E7E0D3 /* Example */,
 				20EC4F582757B5E400E7E0D3 /* UI QueueTests */,
 				20EC4F632757B5E400E7E0D3 /* UI QueueUITests */,
 				20EC4FAA275E21C400E7E0D3 /* UIPresentCoordinator */,
 				20EC4FB7275E21C400E7E0D3 /* UIPresentCoordinatorTests */,
+				20EC4FF9275E263800E7E0D3 /* UIPresentCoordinator */,
+				20EC5006275E263900E7E0D3 /* UIPresentCoordinatorTests */,
 				20EC4F402757B5E300E7E0D3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -158,8 +177,8 @@
 				20EC4F3F2757B5E300E7E0D3 /* UI Queue.app */,
 				20EC4F552757B5E400E7E0D3 /* UI QueueTests.xctest */,
 				20EC4F602757B5E400E7E0D3 /* UI QueueUITests.xctest */,
-				20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */,
-				20EC4FB1275E21C400E7E0D3 /* UIPresentCoordinatorTests.xctest */,
+				20EC4FF8275E263800E7E0D3 /* UIPresentCoordinator.framework */,
+				20EC5000275E263800E7E0D3 /* UIPresentCoordinatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,14 +233,54 @@
 			path = UIPresentCoordinatorTests;
 			sourceTree = "<group>";
 		};
+		20EC4FF9275E263800E7E0D3 /* UIPresentCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				20EC4FFA275E263800E7E0D3 /* UIPresentCoordinator.h */,
+				20EC4FFB275E263800E7E0D3 /* Info.plist */,
+			);
+			path = UIPresentCoordinator;
+			sourceTree = "<group>";
+		};
+		20EC5006275E263900E7E0D3 /* UIPresentCoordinatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				20EC5007275E263900E7E0D3 /* UIPresentCoordinatorTests.swift */,
+				20EC5009275E263900E7E0D3 /* Info.plist */,
+			);
+			path = UIPresentCoordinatorTests;
+			sourceTree = "<group>";
+		};
+		20EC5015275E265500E7E0D3 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				20EC5016275E265500E7E0D3 /* UIPresentCoordinator.swift */,
+				20EC5017275E265500E7E0D3 /* Extensions */,
+				20EC501A275E265500E7E0D3 /* PresentingType.swift */,
+				20EC501B275E265500E7E0D3 /* UIKitPresentTask.swift */,
+				20EC501C275E265500E7E0D3 /* Queue.swift */,
+				20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		20EC5017275E265500E7E0D3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				20EC5018275E265500E7E0D3 /* UIWindow+Extension.swift */,
+				20EC5019275E265500E7E0D3 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		20EC4FA4275E21C400E7E0D3 /* Headers */ = {
+		20EC4FF3275E263800E7E0D3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20EC4FBB275E21C400E7E0D3 /* UIPresentCoordinator.h in Headers */,
+				20EC500A275E263900E7E0D3 /* UIPresentCoordinator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +299,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				20EC4FBD275E21C400E7E0D3 /* PBXTargetDependency */,
+				20EC500C275E263900E7E0D3 /* PBXTargetDependency */,
 			);
 			name = "UI Queue";
 			productName = "UI Queue";
@@ -283,44 +342,41 @@
 			productReference = 20EC4F602757B5E400E7E0D3 /* UI QueueUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		20EC4FA8275E21C400E7E0D3 /* UIPresentCoordinator */ = {
+		20EC4FF7275E263800E7E0D3 /* UIPresentCoordinator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20EC4FC0275E21C500E7E0D3 /* Build configuration list for PBXNativeTarget "UIPresentCoordinator" */;
+			buildConfigurationList = 20EC500F275E263900E7E0D3 /* Build configuration list for PBXNativeTarget "UIPresentCoordinator" */;
 			buildPhases = (
-				20EC4FA4275E21C400E7E0D3 /* Headers */,
-				20EC4FA5275E21C400E7E0D3 /* Sources */,
-				20EC4FA6275E21C400E7E0D3 /* Frameworks */,
-				20EC4FA7275E21C400E7E0D3 /* Resources */,
+				20EC4FF3275E263800E7E0D3 /* Headers */,
+				20EC4FF4275E263800E7E0D3 /* Sources */,
+				20EC4FF5275E263800E7E0D3 /* Frameworks */,
+				20EC4FF6275E263800E7E0D3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = UIPresentCoordinator;
-			packageProductDependencies = (
-				20EC4FDA275E235D00E7E0D3 /* UIPresentCoordinator */,
-			);
 			productName = UIPresentCoordinator;
-			productReference = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */;
+			productReference = 20EC4FF8275E263800E7E0D3 /* UIPresentCoordinator.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		20EC4FB0275E21C400E7E0D3 /* UIPresentCoordinatorTests */ = {
+		20EC4FFF275E263800E7E0D3 /* UIPresentCoordinatorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20EC4FC4275E21C500E7E0D3 /* Build configuration list for PBXNativeTarget "UIPresentCoordinatorTests" */;
+			buildConfigurationList = 20EC5012275E263900E7E0D3 /* Build configuration list for PBXNativeTarget "UIPresentCoordinatorTests" */;
 			buildPhases = (
-				20EC4FAD275E21C400E7E0D3 /* Sources */,
-				20EC4FAE275E21C400E7E0D3 /* Frameworks */,
-				20EC4FAF275E21C400E7E0D3 /* Resources */,
+				20EC4FFC275E263800E7E0D3 /* Sources */,
+				20EC4FFD275E263800E7E0D3 /* Frameworks */,
+				20EC4FFE275E263800E7E0D3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				20EC4FB4275E21C400E7E0D3 /* PBXTargetDependency */,
-				20EC4FB6275E21C400E7E0D3 /* PBXTargetDependency */,
+				20EC5003275E263800E7E0D3 /* PBXTargetDependency */,
+				20EC5005275E263900E7E0D3 /* PBXTargetDependency */,
 			);
 			name = UIPresentCoordinatorTests;
 			productName = UIPresentCoordinatorTests;
-			productReference = 20EC4FB1275E21C400E7E0D3 /* UIPresentCoordinatorTests.xctest */;
+			productReference = 20EC5000275E263800E7E0D3 /* UIPresentCoordinatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -343,10 +399,10 @@
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = 20EC4F3E2757B5E300E7E0D3;
 					};
-					20EC4FA8275E21C400E7E0D3 = {
+					20EC4FF7275E263800E7E0D3 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
-					20EC4FB0275E21C400E7E0D3 = {
+					20EC4FFF275E263800E7E0D3 = {
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = 20EC4F3E2757B5E300E7E0D3;
 					};
@@ -371,8 +427,8 @@
 				20EC4F3E2757B5E300E7E0D3 /* UI Queue */,
 				20EC4F542757B5E400E7E0D3 /* UI QueueTests */,
 				20EC4F5F2757B5E400E7E0D3 /* UI QueueUITests */,
-				20EC4FA8275E21C400E7E0D3 /* UIPresentCoordinator */,
-				20EC4FB0275E21C400E7E0D3 /* UIPresentCoordinatorTests */,
+				20EC4FF7275E263800E7E0D3 /* UIPresentCoordinator */,
+				20EC4FFF275E263800E7E0D3 /* UIPresentCoordinatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -402,14 +458,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20EC4FA7275E21C400E7E0D3 /* Resources */ = {
+		20EC4FF6275E263800E7E0D3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20EC4FAF275E21C400E7E0D3 /* Resources */ = {
+		20EC4FFE275E263800E7E0D3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -445,18 +501,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20EC4FA5275E21C400E7E0D3 /* Sources */ = {
+		20EC4FF4275E263800E7E0D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20EC5029275E265F00E7E0D3 /* SwiftUIPresentTask.swift in Sources */,
+				20EC502A275E265F00E7E0D3 /* Queue.swift in Sources */,
+				20EC5028275E265F00E7E0D3 /* PresentingType.swift in Sources */,
+				20EC5026275E265F00E7E0D3 /* UIViewController+Extension.swift in Sources */,
+				20EC5025275E265F00E7E0D3 /* UIWindow+Extension.swift in Sources */,
+				20EC5027275E265F00E7E0D3 /* UIKitPresentTask.swift in Sources */,
+				20EC502B275E266400E7E0D3 /* UIPresentCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20EC4FAD275E21C400E7E0D3 /* Sources */ = {
+		20EC4FFC275E263800E7E0D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20EC4FB9275E21C400E7E0D3 /* UIPresentCoordinatorTests.swift in Sources */,
+				20EC5008275E263900E7E0D3 /* UIPresentCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,20 +536,20 @@
 			target = 20EC4F3E2757B5E300E7E0D3 /* UI Queue */;
 			targetProxy = 20EC4F612757B5E400E7E0D3 /* PBXContainerItemProxy */;
 		};
-		20EC4FB4275E21C400E7E0D3 /* PBXTargetDependency */ = {
+		20EC5003275E263800E7E0D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 20EC4FA8275E21C400E7E0D3 /* UIPresentCoordinator */;
-			targetProxy = 20EC4FB3275E21C400E7E0D3 /* PBXContainerItemProxy */;
+			target = 20EC4FF7275E263800E7E0D3 /* UIPresentCoordinator */;
+			targetProxy = 20EC5002275E263800E7E0D3 /* PBXContainerItemProxy */;
 		};
-		20EC4FB6275E21C400E7E0D3 /* PBXTargetDependency */ = {
+		20EC5005275E263900E7E0D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 20EC4F3E2757B5E300E7E0D3 /* UI Queue */;
-			targetProxy = 20EC4FB5275E21C400E7E0D3 /* PBXContainerItemProxy */;
+			targetProxy = 20EC5004275E263900E7E0D3 /* PBXContainerItemProxy */;
 		};
-		20EC4FBD275E21C400E7E0D3 /* PBXTargetDependency */ = {
+		20EC500C275E263900E7E0D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 20EC4FA8275E21C400E7E0D3 /* UIPresentCoordinator */;
-			targetProxy = 20EC4FBC275E21C400E7E0D3 /* PBXContainerItemProxy */;
+			target = 20EC4FF7275E263800E7E0D3 /* UIPresentCoordinator */;
+			targetProxy = 20EC500B275E263900E7E0D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -629,6 +692,7 @@
 		20EC4F6A2757B5E400E7E0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -648,6 +712,7 @@
 		20EC4F6B2757B5E400E7E0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -748,7 +813,7 @@
 			};
 			name = Release;
 		};
-		20EC4FC1275E21C500E7E0D3 /* Debug */ = {
+		20EC5010275E263900E7E0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -775,7 +840,7 @@
 			};
 			name = Debug;
 		};
-		20EC4FC2275E21C500E7E0D3 /* Release */ = {
+		20EC5011275E263900E7E0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -802,9 +867,10 @@
 			};
 			name = Release;
 		};
-		20EC4FC5275E21C500E7E0D3 /* Debug */ = {
+		20EC5013275E263900E7E0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QWHX6X2C6N;
 				INFOPLIST_FILE = UIPresentCoordinatorTests/Info.plist;
@@ -821,9 +887,10 @@
 			};
 			name = Debug;
 		};
-		20EC4FC6275E21C500E7E0D3 /* Release */ = {
+		20EC5014275E263900E7E0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QWHX6X2C6N;
 				INFOPLIST_FILE = UIPresentCoordinatorTests/Info.plist;
@@ -879,20 +946,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20EC4FC0275E21C500E7E0D3 /* Build configuration list for PBXNativeTarget "UIPresentCoordinator" */ = {
+		20EC500F275E263900E7E0D3 /* Build configuration list for PBXNativeTarget "UIPresentCoordinator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				20EC4FC1275E21C500E7E0D3 /* Debug */,
-				20EC4FC2275E21C500E7E0D3 /* Release */,
+				20EC5010275E263900E7E0D3 /* Debug */,
+				20EC5011275E263900E7E0D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20EC4FC4275E21C500E7E0D3 /* Build configuration list for PBXNativeTarget "UIPresentCoordinatorTests" */ = {
+		20EC5012275E263900E7E0D3 /* Build configuration list for PBXNativeTarget "UIPresentCoordinatorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				20EC4FC5275E21C500E7E0D3 /* Debug */,
-				20EC4FC6275E21C500E7E0D3 /* Release */,
+				20EC5013275E263900E7E0D3 /* Debug */,
+				20EC5014275E263900E7E0D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -909,14 +976,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		20EC4FDA275E235D00E7E0D3 /* UIPresentCoordinator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 20EC4FD9275E235D00E7E0D3 /* XCRemoteSwiftPackageReference "UIPresentCoordinator" */;
-			productName = UIPresentCoordinator;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20EC4F372757B5E300E7E0D3 /* Project object */;
 }
