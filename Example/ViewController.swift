@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import UIPresentCoordinator
 
-class ViewController: UIViewController {
+class DemoViewController: UIViewController {
     
     @IBOutlet weak var queueItemLabel: UILabel!
     
@@ -33,8 +33,16 @@ class ViewController: UIViewController {
         vc.didMove(toParent: self)
         
         swiftUIDebugView = debugView
-        UIPresentCoordinator.suspendInterruptDefaultAlert = true
+        UIPresentCoordinator.shared.suspendInterruptDefaultAlert = true
         
+    }
+    
+    @IBAction func suspendSwitchDidChange(_ sender: UISwitch) {
+        if sender.isOn {
+            UIPresentCoordinator.shared.suspend()
+        } else {
+            UIPresentCoordinator.shared.resume()
+        }
     }
     
     private func watchQueue() {
@@ -84,7 +92,16 @@ class ViewController: UIViewController {
 
     private func showUIKitPresent(useQueue: Bool) {
         let viewController = UIViewController.init()
-        viewController.view.backgroundColor = .yellow
+        viewController.view.backgroundColor = .white
+        
+        let label = UILabel.init(frame: .init(x: 0, y: 0, width: 200, height: 200))
+        label.text = "UIKit + Sheet\n\(useQueue ? "Queue" : "Interrupt")"
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth, .flexibleHeight]
+
+        label.center = viewController.view.center
+        viewController.view.addSubview(label)
 
         if useQueue {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
@@ -119,7 +136,7 @@ class ViewController: UIViewController {
 
 struct DebugView: View {
     
-    private let presentCoordinator: UIPresentable = UIPresentCoordinator.shared
+    private let presentCoordinator: UIPresentCoordinatable = UIPresentCoordinator.shared
 
     // Interrupt
     @State private var isPresentedAlert = false
@@ -140,14 +157,14 @@ struct DebugView: View {
     init(showAlert: (()->Void)?) {
         self.showAlert = showAlert
         _ = alertTask.content {
-            Alert(title: Text("SwiftUI + Alert"))
-        }
-        _ = listAlertTask.content {
-            Alert(title: Text("List Button"))
+            Alert(title: Text("SwiftUI + Alert"), message: Text("Queue"))
         }
         _ = sheetTask.content {
             AnyView(
-                Text("Hello")
+                VStack {
+                    Text("SwiftUI + Sheet")
+                    Text("Interrupt")
+                }
             )
         }
     }
@@ -163,7 +180,7 @@ struct DebugView: View {
                 self.isPresentedAlert = true
             })
             .alert(isPresented: self.$isPresentedAlert) {
-                Alert(title: Text("SwiftUI + Alert"))
+                Alert(title: Text("SwiftUI + Alert"), message: Text("Interrupt"))
             }
             
             // Sheet
@@ -172,7 +189,8 @@ struct DebugView: View {
             })
             .sheet(isPresented: $isPresentedSheet) {
             } content: {
-                Text("Hello")
+                Text("SwiftUI + Sheet")
+                Text("Interrupt")
             }
 
             Text("Queue")
@@ -194,19 +212,6 @@ struct DebugView: View {
             .sheet(isPresented: $sheetTask.isPresented) {
             } content: {
                 presentCoordinator.dequeue()
-            }
-
-            // リストボタン
-            List(1..<2) { index in
-                Button(action: {
-//                    self.didTap?()
-                    self.presentCoordinator.enqueue(.alert(listAlertTask))
-//                    self.didTap?()
-                }) {
-                    Text("Item \(index)")
-                }
-            }.alert(isPresented: $listAlertTask.isPresented) {
-                self.presentCoordinator.dequeue()
             }
         }
     }
