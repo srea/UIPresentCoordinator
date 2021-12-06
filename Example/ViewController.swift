@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import UIPresentCoordinator
+import StoreKit
 
 class DemoViewController: UIViewController {
     
@@ -56,6 +57,7 @@ class DemoViewController: UIViewController {
     
     @IBAction func showUIKitAlert(_ sender: Any) {
         showUIKit(style: .alert, useQueue: false)
+        requestReview()
     }
     
     @IBAction func showUIKitSheet(_ sender: Any) {
@@ -87,6 +89,12 @@ class DemoViewController: UIViewController {
             }
         } else {
             present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func requestReview() {
+        if let scene = view.window?.windowScene {
+            SKStoreReviewController.requestReview(in: scene)
         }
     }
 

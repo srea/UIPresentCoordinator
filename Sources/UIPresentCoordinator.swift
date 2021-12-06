@@ -80,6 +80,11 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
         if suspendInterruptDefaultAlert && topViewController is UIAlertController {
             return
         }
+        
+        // Store Review
+        if String.init(describing: topViewController).contains("SKRemoteReviewController") {
+            return
+        }
 
         isPresenting = true
 
