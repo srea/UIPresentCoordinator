@@ -21,7 +21,7 @@ public protocol UIPresentable {
     func flush()
 }
 
-final class UIPresentCoordinator: ObservableObject, UIPresentable {
+public final class UIPresentCoordinator: ObservableObject, UIPresentable {
     
     public static let shared = UIPresentCoordinator.init()
 
@@ -98,7 +98,7 @@ extension UIPresentCoordinator {
 
 /// Dequeue
 extension UIPresentCoordinator {
-    func dequeue() -> AnyView {
+    public func dequeue() -> AnyView {
         guard case .swiftUI(let alert) = queue.peek() else {
             fatalError()
         }
@@ -111,7 +111,7 @@ extension UIPresentCoordinator {
         return ui
     }
 
-    func dequeue() -> Alert {
+    public func dequeue() -> Alert {
         guard case .swiftUI(let alert) = queue.peek() else {
             fatalError()
         }
