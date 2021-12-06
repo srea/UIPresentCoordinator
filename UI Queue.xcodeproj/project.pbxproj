@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,13 +20,14 @@
 		20EC4FBB275E21C400E7E0D3 /* UIPresentCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 20EC4FAB275E21C400E7E0D3 /* UIPresentCoordinator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20EC4FBE275E21C500E7E0D3 /* UIPresentCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */; };
 		20EC4FBF275E21C500E7E0D3 /* UIPresentCoordinator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		20EC4FD2275E221600E7E0D3 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F892759246000E7E0D3 /* Queue.swift */; };
-		20EC4FD3275E221600E7E0D3 /* SwiftUIPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F8A2759246000E7E0D3 /* SwiftUIPresentTask.swift */; };
-		20EC4FD4275E221600E7E0D3 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F842759246000E7E0D3 /* UIWindow+Extension.swift */; };
-		20EC4FD5275E221600E7E0D3 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F862759246000E7E0D3 /* UIViewController+Extension.swift */; };
-		20EC4FD6275E221600E7E0D3 /* UIKitPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F882759246000E7E0D3 /* UIKitPresentTask.swift */; };
-		20EC4FD7275E221600E7E0D3 /* UIPresentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F852759246000E7E0D3 /* UIPresentCoordinator.swift */; };
-		20EC4FD8275E221600E7E0D3 /* PresentingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F872759246000E7E0D3 /* PresentingType.swift */; };
+		20EC4FDB275E235D00E7E0D3 /* UIPresentCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 20EC4FDA275E235D00E7E0D3 /* UIPresentCoordinator */; };
+		20EC4FEC275E240800E7E0D3 /* UIKitPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE2275E23F600E7E0D3 /* UIKitPresentTask.swift */; };
+		20EC4FED275E240800E7E0D3 /* PresentingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE1275E23F600E7E0D3 /* PresentingType.swift */; };
+		20EC4FEE275E240800E7E0D3 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE3275E23F600E7E0D3 /* Queue.swift */; };
+		20EC4FEF275E240800E7E0D3 /* SwiftUIPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE4275E23F600E7E0D3 /* SwiftUIPresentTask.swift */; };
+		20EC4FF0275E240D00E7E0D3 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FDF275E23F500E7E0D3 /* UIWindow+Extension.swift */; };
+		20EC4FF1275E240D00E7E0D3 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FE0275E23F600E7E0D3 /* UIViewController+Extension.swift */; };
+		20EC4FF2275E241000E7E0D3 /* UIPresentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4FDD275E23F500E7E0D3 /* UIPresentCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,19 +97,19 @@
 		20EC4F602757B5E400E7E0D3 /* UI QueueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI QueueUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4F642757B5E400E7E0D3 /* UI_QueueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_QueueUITests.swift; sourceTree = "<group>"; };
 		20EC4F662757B5E400E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20EC4F842759246000E7E0D3 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
-		20EC4F852759246000E7E0D3 /* UIPresentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinator.swift; sourceTree = "<group>"; };
-		20EC4F862759246000E7E0D3 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		20EC4F872759246000E7E0D3 /* PresentingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentingType.swift; sourceTree = "<group>"; };
-		20EC4F882759246000E7E0D3 /* UIKitPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitPresentTask.swift; sourceTree = "<group>"; };
-		20EC4F892759246000E7E0D3 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		20EC4F8A2759246000E7E0D3 /* SwiftUIPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPresentTask.swift; sourceTree = "<group>"; };
 		20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIPresentCoordinator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4FAB275E21C400E7E0D3 /* UIPresentCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPresentCoordinator.h; sourceTree = "<group>"; };
 		20EC4FAC275E21C400E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20EC4FB1275E21C400E7E0D3 /* UIPresentCoordinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIPresentCoordinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4FB8275E21C400E7E0D3 /* UIPresentCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinatorTests.swift; sourceTree = "<group>"; };
 		20EC4FBA275E21C400E7E0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20EC4FDD275E23F500E7E0D3 /* UIPresentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinator.swift; sourceTree = "<group>"; };
+		20EC4FDF275E23F500E7E0D3 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		20EC4FE0275E23F600E7E0D3 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		20EC4FE1275E23F600E7E0D3 /* PresentingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentingType.swift; sourceTree = "<group>"; };
+		20EC4FE2275E23F600E7E0D3 /* UIKitPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitPresentTask.swift; sourceTree = "<group>"; };
+		20EC4FE3275E23F600E7E0D3 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		20EC4FE4275E23F600E7E0D3 /* SwiftUIPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPresentTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20EC4FDB275E235D00E7E0D3 /* UIPresentCoordinator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +157,7 @@
 		20EC4F362757B5E300E7E0D3 = {
 			isa = PBXGroup;
 			children = (
-				20EC4FC8275E21F600E7E0D3 /* UIPresentCoordinator */,
+				20EC4FDC275E23F500E7E0D3 /* Sources */,
 				20EC4F412757B5E300E7E0D3 /* Example */,
 				20EC4F582757B5E400E7E0D3 /* UI QueueTests */,
 				20EC4F632757B5E400E7E0D3 /* UI QueueUITests */,
@@ -209,28 +211,6 @@
 			path = "UI QueueUITests";
 			sourceTree = "<group>";
 		};
-		20EC4F832759246000E7E0D3 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				20EC4FA3275DB2A600E7E0D3 /* Extensions */,
-				20EC4F852759246000E7E0D3 /* UIPresentCoordinator.swift */,
-				20EC4F872759246000E7E0D3 /* PresentingType.swift */,
-				20EC4F882759246000E7E0D3 /* UIKitPresentTask.swift */,
-				20EC4F892759246000E7E0D3 /* Queue.swift */,
-				20EC4F8A2759246000E7E0D3 /* SwiftUIPresentTask.swift */,
-			);
-			path = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-		20EC4FA3275DB2A600E7E0D3 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				20EC4F842759246000E7E0D3 /* UIWindow+Extension.swift */,
-				20EC4F862759246000E7E0D3 /* UIViewController+Extension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		20EC4FAA275E21C400E7E0D3 /* UIPresentCoordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,12 +229,26 @@
 			path = UIPresentCoordinatorTests;
 			sourceTree = "<group>";
 		};
-		20EC4FC8275E21F600E7E0D3 /* UIPresentCoordinator */ = {
+		20EC4FDC275E23F500E7E0D3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				20EC4F832759246000E7E0D3 /* Sources */,
+				20EC4FDD275E23F500E7E0D3 /* UIPresentCoordinator.swift */,
+				20EC4FDE275E23F500E7E0D3 /* Extensions */,
+				20EC4FE1275E23F600E7E0D3 /* PresentingType.swift */,
+				20EC4FE2275E23F600E7E0D3 /* UIKitPresentTask.swift */,
+				20EC4FE3275E23F600E7E0D3 /* Queue.swift */,
+				20EC4FE4275E23F600E7E0D3 /* SwiftUIPresentTask.swift */,
 			);
-			name = UIPresentCoordinator;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		20EC4FDE275E23F500E7E0D3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				20EC4FDF275E23F500E7E0D3 /* UIWindow+Extension.swift */,
+				20EC4FE0275E23F600E7E0D3 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +334,9 @@
 			dependencies = (
 			);
 			name = UIPresentCoordinator;
+			packageProductDependencies = (
+				20EC4FDA275E235D00E7E0D3 /* UIPresentCoordinator */,
+			);
 			productName = UIPresentCoordinator;
 			productReference = 20EC4FA9275E21C400E7E0D3 /* UIPresentCoordinator.framework */;
 			productType = "com.apple.product-type.framework";
@@ -401,6 +398,9 @@
 				Base,
 			);
 			mainGroup = 20EC4F362757B5E300E7E0D3;
+			packageReferences = (
+				20EC4FD9275E235D00E7E0D3 /* XCRemoteSwiftPackageReference "UIPresentCoordinator" */,
+			);
 			productRefGroup = 20EC4F402757B5E300E7E0D3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -486,13 +486,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20EC4FD8275E221600E7E0D3 /* PresentingType.swift in Sources */,
-				20EC4FD5275E221600E7E0D3 /* UIViewController+Extension.swift in Sources */,
-				20EC4FD3275E221600E7E0D3 /* SwiftUIPresentTask.swift in Sources */,
-				20EC4FD7275E221600E7E0D3 /* UIPresentCoordinator.swift in Sources */,
-				20EC4FD2275E221600E7E0D3 /* Queue.swift in Sources */,
-				20EC4FD4275E221600E7E0D3 /* UIWindow+Extension.swift in Sources */,
-				20EC4FD6275E221600E7E0D3 /* UIKitPresentTask.swift in Sources */,
+				20EC4FF1275E240D00E7E0D3 /* UIViewController+Extension.swift in Sources */,
+				20EC4FED275E240800E7E0D3 /* PresentingType.swift in Sources */,
+				20EC4FF0275E240D00E7E0D3 /* UIWindow+Extension.swift in Sources */,
+				20EC4FEE275E240800E7E0D3 /* Queue.swift in Sources */,
+				20EC4FEF275E240800E7E0D3 /* SwiftUIPresentTask.swift in Sources */,
+				20EC4FEC275E240800E7E0D3 /* UIKitPresentTask.swift in Sources */,
+				20EC4FF2275E241000E7E0D3 /* UIPresentCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,6 +946,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20EC4FD9275E235D00E7E0D3 /* XCRemoteSwiftPackageReference "UIPresentCoordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/srea/UIPresentCoordinator";
+			requirement = {
+				branch = "feature/support-swiftpm";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20EC4FDA275E235D00E7E0D3 /* UIPresentCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20EC4FD9275E235D00E7E0D3 /* XCRemoteSwiftPackageReference "UIPresentCoordinator" */;
+			productName = UIPresentCoordinator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20EC4F372757B5E300E7E0D3 /* Project object */;
 }

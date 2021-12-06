@@ -8,9 +8,9 @@
 import UIKit
 
 public struct UIKitPresentTask {
-    let controller: UIViewController
-    let animated: Bool
-    let completion: (() -> Void)?
+    public let controller: UIViewController
+    public let animated: Bool
+    public let completion: (() -> Void)?
     
     func show() {
         guard let topViewController = UIWindow.key?.topViewController() else {

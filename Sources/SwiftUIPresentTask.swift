@@ -34,9 +34,9 @@ public class Task<T>: ObservableObject {
     @Published public var isPresented = false
     var content: T?
     
-    init() {}
+    public init() {}
     
-    func content(_ content: () -> T) -> Task<T> {
+    public func content(_ content: () -> T) -> Task<T> {
         self.content = content()
         return self
     }

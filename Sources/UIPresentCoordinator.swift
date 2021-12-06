@@ -23,9 +23,9 @@ public protocol UIPresentable {
 
 final class UIPresentCoordinator: ObservableObject, UIPresentable {
     
-    static let shared = UIPresentCoordinator.init()
+    public static let shared = UIPresentCoordinator.init()
 
-    static var suspendInterruptDefaultAlert: Bool = true
+    public static var suspendInterruptDefaultAlert: Bool = true
     
     public var waitingItems: Int {
         queue.count()
