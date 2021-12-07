@@ -22,7 +22,7 @@ In addition, I felt it was necessary to have a mechanism that takes into account
 
 ## Demo
 
-<video src="https://github.com/srea/UIPresentCoordinator/Docs/demo.mp4" width="180" />
+![Demo](https://github.com/srea/UIPresentCoordinator/Docs/demo.gif)
 
 ## Installation
 
