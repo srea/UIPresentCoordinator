@@ -36,7 +36,6 @@ presentQueue(alert, animated: true, completion: nil)
 
 ```swift
 struct DebugView: View {
-    private let presentCoordinator: UIPresentable = UIPresentCoordinator.shared
 
     @State private var isPresented = false
     
