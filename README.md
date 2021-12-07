@@ -1,6 +1,21 @@
 # UIPresentCoordinator
 Controls interrupt handling, such as alert views, and is compatible with UIKit and Swift UI.
 
+## Motivation
+
+The purpose of creating this library was to make it easier to solve the following problems.
+
+```
+[Presentation] Attempt to present <UIAlertController> on <ViewController>  which is already presenting <UIViewController>.
+```
+
+In addition, I felt it was necessary to have a mechanism that takes into account SwiftUI as well as UIKit.
+
+## Requirements
+
+- iOS 13+
+- Swift 5
+
 ## Installation
 
 ### SwiftPM
