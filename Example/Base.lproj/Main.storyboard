@@ -8,6 +8,52 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Custom Dialog View Controller-->
+        <scene sceneID="Hvv-CD-aei">
+            <objects>
+                <viewController storyboardIdentifier="CustomDialog" id="a2Q-x4-FJN" customClass="CustomDialogViewController" customModule="UI_Queue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vZ8-Kf-Oei">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqJ-zJ-asr">
+                                <rect key="frame" x="74.5" y="304.5" width="265" height="287"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHA-ns-Vrw">
+                                        <rect key="frame" x="235" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="bQq-nT-Kzr"/>
+                                            <constraint firstAttribute="height" constant="30" id="xQP-WQ-Ed6"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="a2Q-x4-FJN" eventType="touchUpInside" id="tgV-pO-a1L"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="287" id="9eP-xn-ceF"/>
+                                    <constraint firstItem="qHA-ns-Vrw" firstAttribute="top" secondItem="zqJ-zJ-asr" secondAttribute="top" id="Lte-wp-jjp"/>
+                                    <constraint firstAttribute="trailing" secondItem="qHA-ns-Vrw" secondAttribute="trailing" id="W3J-3l-87Q"/>
+                                    <constraint firstAttribute="width" constant="265" id="biz-oP-Jcv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lxz-eZ-lT7"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zqJ-zJ-asr" firstAttribute="centerY" secondItem="vZ8-Kf-Oei" secondAttribute="centerY" id="Kfv-OE-3U5"/>
+                            <constraint firstItem="zqJ-zJ-asr" firstAttribute="centerX" secondItem="vZ8-Kf-Oei" secondAttribute="centerX" id="g4b-UE-7RQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dialogView" destination="zqJ-zJ-asr" id="JTd-XB-vbv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ue-sV-ZGd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1075.3623188405797" y="-19.419642857142858"/>
+        </scene>
         <!--Demo View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -120,32 +166,32 @@
                                                     <action selector="showUIKitSheetQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OpE-tt-hzk"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5R-YX-abs">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="System" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5R-YX-abs">
                                                 <rect key="frame" x="0.0" y="363" width="334" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZf-hS-WJ8">
-                                                <rect key="frame" x="0.0" y="383.5" width="334" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <state key="normal" title="Request Remote Notification"/>
-                                                <connections>
-                                                    <action selector="requestRemoteNotificationDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MWd-oc-Lhl"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YO7-ho-99z">
-                                                <rect key="frame" x="0.0" y="412.5" width="334" height="29"/>
+                                                <rect key="frame" x="0.0" y="383.5" width="334" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="Request Review"/>
                                                 <connections>
                                                     <action selector="requestReviewDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ffV-Z6-gvX"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZf-hS-WJ8">
+                                                <rect key="frame" x="0.0" y="412.5" width="334" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="Request APNs (Can't Support)"/>
+                                                <connections>
+                                                    <action selector="requestRemoteNotificationDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MWd-oc-Lhl"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J11-86-Atc">
                                                 <rect key="frame" x="0.0" y="441.5" width="334" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <state key="normal" title="Request IDFA  (Not Support)"/>
+                                                <state key="normal" title="Request IDFA (Can't Support)"/>
                                                 <connections>
                                                     <action selector="requestIDFADidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NXd-Gh-3Mn"/>
                                                 </connections>
@@ -153,7 +199,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNF-Z3-KQW">
                                                 <rect key="frame" x="0.0" y="470.5" width="334" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <state key="normal" title="Request Location  (Not Support)"/>
+                                                <state key="normal" title="Request Location  (Can't Support)"/>
                                                 <connections>
                                                     <action selector="requestLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7r2-X5-Z6h"/>
                                                 </connections>
@@ -219,6 +265,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

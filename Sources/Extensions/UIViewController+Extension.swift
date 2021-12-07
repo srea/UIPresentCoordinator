@@ -25,12 +25,22 @@ extension UIViewController {
         }
         swizzleMethod(#selector(UIViewController.viewDidDisappear(_:)),
                       #selector(UIViewController._present_coordinator_viewDidDisappear(_:)))
+//        swizzleMethod(#selector(UIViewController.present(_:animated:completion:)),
+//                      #selector(UIViewController._present_coordinator_present(_:animated:completion:)))
     }
     
     public func presentQueue(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
         UIPresentCoordinator.shared.enqueue(viewController, animated: animated, completion: completion)
     }
     
+    
+//    @objc private func _present_coordinator_present(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
+//        self._present_coordinator_present(viewController, animated: animated, completion: completion)
+//        let name = String.init(describing: type(of: viewController))
+//        print(name)
+//        // StoreKit: SKStoreReviewViewController
+//    }
+
     @objc private func _present_coordinator_viewDidDisappear(_ animated: Bool) {
         self._present_coordinator_viewDidDisappear(animated)
         guard isBeingDismissed else {

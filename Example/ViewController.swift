@@ -139,9 +139,13 @@ class DemoViewController: UIViewController {
     }
     
     private func showUIKitPresent(useQueue: Bool) {
-        let viewController = UIViewController.init()
-        viewController.view.backgroundColor = .white
         
+        guard let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "CustomDialog") as? CustomDialogViewController else {
+            return
+        }
+        viewController.modalPresentationStyle = .custom
+        viewController.modalTransitionStyle = .crossDissolve
+
         let label = UILabel.init(frame: .init(x: 0, y: 0, width: 200, height: 200))
         label.text = "UIKit + Sheet\n\(useQueue ? "Queue" : "Interrupt")"
         label.numberOfLines = 2

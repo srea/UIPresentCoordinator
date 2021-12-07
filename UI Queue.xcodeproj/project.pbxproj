@@ -27,6 +27,7 @@
 		20EC5029275E265F00E7E0D3 /* SwiftUIPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */; };
 		20EC502A275E265F00E7E0D3 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501C275E265500E7E0D3 /* Queue.swift */; };
 		20EC502B275E266400E7E0D3 /* UIPresentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC5016275E265500E7E0D3 /* UIPresentCoordinator.swift */; };
+		20EC502D275EEB1A00E7E0D3 /* CustomDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC502C275EEB1A00E7E0D3 /* CustomDialogViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		20EC501B275E265500E7E0D3 /* UIKitPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitPresentTask.swift; sourceTree = "<group>"; };
 		20EC501C275E265500E7E0D3 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPresentTask.swift; sourceTree = "<group>"; };
+		20EC502C275EEB1A00E7E0D3 /* CustomDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialogViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				20EC4F422757B5E300E7E0D3 /* AppDelegate.swift */,
 				20EC4F442757B5E300E7E0D3 /* SceneDelegate.swift */,
 				20EC4F462757B5E300E7E0D3 /* ViewController.swift */,
+				20EC502C275EEB1A00E7E0D3 /* CustomDialogViewController.swift */,
 				20EC4F482757B5E300E7E0D3 /* Main.storyboard */,
 				20EC4F4B2757B5E400E7E0D3 /* Assets.xcassets */,
 				20EC4F4D2757B5E400E7E0D3 /* LaunchScreen.storyboard */,
@@ -481,6 +484,7 @@
 			files = (
 				20EC4F472757B5E300E7E0D3 /* ViewController.swift in Sources */,
 				20EC4F432757B5E300E7E0D3 /* AppDelegate.swift in Sources */,
+				20EC502D275EEB1A00E7E0D3 /* CustomDialogViewController.swift in Sources */,
 				20EC4F452757B5E300E7E0D3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
