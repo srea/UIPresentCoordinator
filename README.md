@@ -1,6 +1,10 @@
 # UIPresentCoordinator
 Controls interrupt handling, such as alert views, and is compatible with UIKit and Swift UI.
 
+This library manages items that are about to be presented in a queue and displays them on a first-in, first-out basis.
+
+I have also tried to control the dialogs that the system displays, such as Push Notifications, App Tracking Transparency, and Location, but it has proven difficult.
+
 ## Motivation
 
 The purpose of creating this library was to make it easier to solve the following problems.
@@ -15,6 +19,10 @@ In addition, I felt it was necessary to have a mechanism that takes into account
 
 - iOS 13+
 - Swift 5
+
+## Demo
+
+TODO...
 
 ## Installation
 
