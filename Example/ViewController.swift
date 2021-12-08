@@ -105,7 +105,7 @@ class DemoViewController: UIViewController {
         
         if useQueue {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
-                self?.presentQueue(alert, animated: true, completion: nil)
+                self?.present(alert, animated: true, completion: nil)
             }
         } else {
             present(alert, animated: true, completion: nil)
@@ -157,6 +157,7 @@ class DemoViewController: UIViewController {
 
         if useQueue {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
+                self?.showUIKit(style: .alert, useQueue: false)
                 self?.presentQueue(viewController, animated: true, completion: nil)
             }
         } else {

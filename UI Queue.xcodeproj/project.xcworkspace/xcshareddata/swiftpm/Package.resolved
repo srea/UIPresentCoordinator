@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "UIPresentCoordinator",
+        "repositoryURL": "https://github.com/srea/UIPresentCoordinator",
+        "state": {
+          "branch": "main",
+          "revision": "cf4a57bd6f5d1eabe8daa3c7d86b562103a1b401",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
