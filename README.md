@@ -31,6 +31,12 @@ In addition, I felt it was necessary to have a mechanism that takes into account
 - File > Swift Packages > Add Package Dependency...
 - Add `https://github.com/srea/UIPresentCoordinator`
 
+### CocoaPods
+
+```
+pod 'UIPresentCoordinator'
+```
+
 ## Usage
 
 ### UIKit
