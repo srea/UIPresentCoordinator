@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   
     s.homepage         = 'https://github.com/srea/UIPresentCoordinator'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
-    s.author           = { 'Scalefocus' => 'y@minipro.co' }
+    s.author           = { 'yuki tamazawa' => 'y@minipro.co' }
     s.source           = { :git => 'https://github.com/srea/UIPresentCoordinator.git', :tag => s.version.to_s }
   
     s.platform     = :ios, "13.0"
