@@ -22,6 +22,10 @@ In addition, I felt it was necessary to have a mechanism that takes into account
 
 ## Demo
 
+|Before|After|
+|-|-|
+|![Before](https://github.com/srea/UIPresentCoordinator/raw/main/Docs/before.gif)|![After](https://github.com/srea/UIPresentCoordinator/raw/main/Docs/after.gif)|
+
 ![Demo](https://github.com/srea/UIPresentCoordinator/raw/main/Docs/demo.gif)
 
 ## Installation
