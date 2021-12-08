@@ -74,7 +74,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
         guard let window = notification.object else {
             return
         }
-        let className = String(describing: type(of: window))
+        _ = String(describing: type(of: window))
     }
 
     public func flush() {
