@@ -114,7 +114,11 @@ class DemoViewController: UIViewController {
     
     private func requestReview() {
         if let scene = view.window?.windowScene {
-            SKStoreReviewController.requestReview(in: scene)
+            if #available(iOS 14.0, *) {
+                SKStoreReviewController.requestReview(in: scene)
+            } else {
+                SKStoreReviewController.requestReview()
+            }
         }
     }
     
@@ -129,9 +133,13 @@ class DemoViewController: UIViewController {
     }
     
     private func requestIDFA() {
-        ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-          print(status)
-        })
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                print(status)
+            })
+        } else {
+            // no-op
+        }
     }
 
     private func requestGPS() {
