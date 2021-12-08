@@ -22,7 +22,7 @@ In addition, I felt it was necessary to have a mechanism that takes into account
 
 ## Demo
 
-![Demo](https://github.com/srea/UIPresentCoordinator/Docs/demo.gif)
+![Demo](https://github.com/srea/UIPresentCoordinator/raw/main/Docs/demo.gif)
 
 ## Installation
 
