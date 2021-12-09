@@ -1,4 +1,11 @@
 # UIPresentCoordinator
+
+[![Platform](https://img.shields.io/cocoapods/p/UIPresentCoordinator.svg?style=flat)](http://cocoadocs.org/srea/UIPresentCoordinator)
+[![License](https://img.shields.io/cocoapods/l/UIPresentCoordinator.svg?style=flat)](http://cocoadocs.org/srea/UIPresentCoordinator)
+[![Version](https://img.shields.io/cocoapods/v/UIPresentCoordinator.svg?style=flat)](http://cocoadocs.org/srea/UIPresentCoordinator)
+
+![](https://github.com/srea/UIPresentCoordinator/raw/main/Docs/Logo_UIPresentCoordinator.png)
+
 Controls interrupt handling, such as alert views, and is compatible with UIKit and Swift UI.
 
 This library manages items that are about to be presented in a queue and displays them on a first-in, first-out basis.
