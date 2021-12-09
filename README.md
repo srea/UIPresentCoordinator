@@ -113,7 +113,7 @@ struct DebugView: View {
 
 ## Contributions
 
-Your ideas, bug fixes, improvements, etc. are all welcome.
+Your ideas, bug fixes, improvements, etc. are all welcome. 🐢
 
 ## License
 
