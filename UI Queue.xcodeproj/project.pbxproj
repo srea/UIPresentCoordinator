@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20D13D8F2765180C005E5EC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20D13D8E2765180C005E5EC3 /* GoogleService-Info.plist */; };
+		20D13D9227652440005E5EC3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9127652440005E5EC3 /* FirebaseAnalytics */; };
+		20D13D9427652440005E5EC3 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9327652440005E5EC3 /* FirebaseAnalyticsSwift-Beta */; };
+		20D13D9627652440005E5EC3 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9527652440005E5EC3 /* FirebaseInAppMessaging-Beta */; };
+		20D13D9827652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9727652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta */; };
 		20EC4F432757B5E300E7E0D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F422757B5E300E7E0D3 /* AppDelegate.swift */; };
 		20EC4F452757B5E300E7E0D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F442757B5E300E7E0D3 /* SceneDelegate.swift */; };
 		20EC4F472757B5E300E7E0D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F462757B5E300E7E0D3 /* ViewController.swift */; };
@@ -83,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		20D13D8E2765180C005E5EC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		20EC4F3F2757B5E300E7E0D3 /* UI Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UI Queue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4F422757B5E300E7E0D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20EC4F442757B5E300E7E0D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,7 +128,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D13D9427652440005E5EC3 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
+				20D13D9227652440005E5EC3 /* FirebaseAnalytics in Frameworks */,
+				20D13D9827652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				20EC500D275E263900E7E0D3 /* UIPresentCoordinator.framework in Frameworks */,
+				20D13D9627652440005E5EC3 /* FirebaseInAppMessaging-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +206,7 @@
 				20EC4F4B2757B5E400E7E0D3 /* Assets.xcassets */,
 				20EC4F4D2757B5E400E7E0D3 /* LaunchScreen.storyboard */,
 				20EC4F502757B5E400E7E0D3 /* Info.plist */,
+				20D13D8E2765180C005E5EC3 /* GoogleService-Info.plist */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -305,6 +316,12 @@
 				20EC500C275E263900E7E0D3 /* PBXTargetDependency */,
 			);
 			name = "UI Queue";
+			packageProductDependencies = (
+				20D13D9127652440005E5EC3 /* FirebaseAnalytics */,
+				20D13D9327652440005E5EC3 /* FirebaseAnalyticsSwift-Beta */,
+				20D13D9527652440005E5EC3 /* FirebaseInAppMessaging-Beta */,
+				20D13D9727652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta */,
+			);
 			productName = "UI Queue";
 			productReference = 20EC4F3F2757B5E300E7E0D3 /* UI Queue.app */;
 			productType = "com.apple.product-type.application";
@@ -422,6 +439,7 @@
 			mainGroup = 20EC4F362757B5E300E7E0D3;
 			packageReferences = (
 				20EC4FD9275E235D00E7E0D3 /* XCRemoteSwiftPackageReference "UIPresentCoordinator" */,
+				20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 20EC4F402757B5E300E7E0D3 /* Products */;
 			projectDirPath = "";
@@ -442,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20EC4F4F2757B5E400E7E0D3 /* LaunchScreen.storyboard in Resources */,
+				20D13D8F2765180C005E5EC3 /* GoogleService-Info.plist in Resources */,
 				20EC4F4C2757B5E400E7E0D3 /* Assets.xcassets in Resources */,
 				20EC4F4A2757B5E300E7E0D3 /* Main.storyboard in Resources */,
 			);
@@ -971,6 +990,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		20EC4FD9275E235D00E7E0D3 /* XCRemoteSwiftPackageReference "UIPresentCoordinator" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/srea/UIPresentCoordinator";
@@ -980,6 +1007,29 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20D13D9127652440005E5EC3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		20D13D9327652440005E5EC3 /* FirebaseAnalyticsSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAnalyticsSwift-Beta";
+		};
+		20D13D9527652440005E5EC3 /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		20D13D9727652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessagingSwift-Beta";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20EC4F372757B5E300E7E0D3 /* Project object */;
 }

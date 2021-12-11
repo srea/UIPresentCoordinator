@@ -12,6 +12,7 @@ import StoreKit
 import UserNotifications
 import AppTrackingTransparency
 import CoreLocation
+import FirebaseAnalytics
 
 class DemoViewController: UIViewController {
     
@@ -78,6 +79,8 @@ class DemoViewController: UIViewController {
         showUIKitPresent(useQueue: true)
     }
 
+    // System
+    
     @IBAction func requestReviewDidTap(_ sender: Any) {
         requestReview()
     }
@@ -94,6 +97,18 @@ class DemoViewController: UIViewController {
         requestGPS()
     }
 
+    @IBAction func requestInAppMessaging(_ sender: Any) {
+        Analytics.logEvent("show_in_app_messaging", parameters: nil)
+    }
+    
+    @IBAction func requestInAppMessaging2(_ sender: Any) {
+        Analytics.logEvent("show_in_app_messaging_b", parameters: nil)
+    }
+    
+    @IBAction func requestInAppMessaging3(_ sender: Any) {
+        Analytics.logEvent("show_in_app_messaging_c", parameters: nil)
+    }
+    
     // Common
     
     private func showUIKit(style: UIAlertController.Style, useQueue: Bool) {

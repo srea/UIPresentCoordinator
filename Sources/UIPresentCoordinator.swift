@@ -10,14 +10,13 @@ import Combine
 import SwiftUI
 
 public protocol UIPresentCoordinatable {
-    
-    // SwiftUI
+
     func enqueue(_ task: SwiftUIPresentTask)
+    func enqueue(_ task: UIKitViewTask)
+    func enqueue(_ task: UIKitWIndowTask)
+
     func dequeue() -> Alert
     func dequeue() -> AnyView
-
-    // UIKit
-    func enqueue(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?)
     
     func suspend()
     func resume()
@@ -35,13 +34,14 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
         queue.count()
     }
 
-    private var isSuspended: Bool = false
+    private var isSuspended: Bool = true
     private var isPresenting: Bool = false
     private var queue = Queue<PresentingType>()
     
     private weak var storeKitWindow: AnyObject?
 
     public init() {
+        UIWindow.present_coordinator_swizzle()
         UIViewController.present_coordinator_swizzle()
         
         NotificationCenter.default.addObserver(self,
@@ -60,20 +60,22 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
     }
     
     @objc func windowDidBecomeVisible(notification: Notification) {
-        guard let window = notification.object else {
+        guard let window = notification.object as? UIWindow else {
             return
         }
         let className = String(describing: type(of: window))
-        
+
         if className.contains("SKStoreReviewPresentationWindow") {
             storeKitWindow = notification.object as AnyObject
         }
     }
     
     @objc func windowDidBecomeHidden(notification: Notification) {
-        guard let window = notification.object else {
+        guard let window = notification.object as? UIWindow else {
             return
         }
+        UIWindow._present_coordinator_isHidden_Internal.remove(window.hash)
+        dismissed()
         _ = String(describing: type(of: window))
     }
 
@@ -81,7 +83,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
         queue.clearAll()
     }
 
-    public func dismissed(_ viewController: UIViewController) {
+    public func dismissed() {
         guard isPresenting else {
             handleNextQueue()
             return
@@ -143,12 +145,19 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 extension UIPresentCoordinator {
     public func enqueue(_ task: SwiftUIPresentTask) {
         // FIXME: 同一TASKが入るとだめ
-        queue.enqueue(.swiftUI(task))
-        handleNextQueue()
+        enqueue(type: .swiftUI(task))
     }
 
-    public func enqueue(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
-        queue.enqueue(.uiKit(.init(controller: viewController, animated: animated, completion: completion)))
+    public func enqueue(_ task: UIKitViewTask) {
+        enqueue(type: .uiKit(.view(task)))
+    }
+    
+    public func enqueue(_ task: UIKitWIndowTask) {
+        enqueue(type: .uiKit(.window(task)))
+    }
+    
+    private func enqueue(type: PresentingType) {
+        queue.enqueue(type)
         handleNextQueue()
     }
 }
