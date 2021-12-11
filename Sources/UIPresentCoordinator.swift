@@ -17,7 +17,7 @@ public protocol UIPresentCoordinatable {
 
     func dequeue() -> Alert
     func dequeue() -> AnyView
-    
+
     func suspend()
     func resume()
 
@@ -25,11 +25,11 @@ public protocol UIPresentCoordinatable {
 }
 
 public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatable {
-    
+
     public static let shared = UIPresentCoordinator.init()
 
     public var suspendInterruptDefaultAlert: Bool = true
-    
+
     public var waitingItems: Int {
         queue.count()
     }
@@ -37,28 +37,28 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
     private var isSuspended: Bool = true
     private var isPresenting: Bool = false
     private var queue = Queue<PresentingType>()
-    
+
     private weak var storeKitWindow: AnyObject?
 
     public init() {
         UIWindow.present_coordinator_swizzle()
         UIViewController.present_coordinator_swizzle()
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(windowDidBecomeVisible(notification:)),
                                                name: UIWindow.didBecomeVisibleNotification,
                                                object: nil)
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(windowDidBecomeHidden(notification:)),
                                                name: UIWindow.didBecomeHiddenNotification,
                                                object: nil)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     @objc func windowDidBecomeVisible(notification: Notification) {
         guard let window = notification.object as? UIWindow else {
             return
@@ -69,7 +69,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
             storeKitWindow = notification.object as AnyObject
         }
     }
-    
+
     @objc func windowDidBecomeHidden(notification: Notification) {
         guard let window = notification.object as? UIWindow else {
             return
@@ -98,7 +98,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 
         handleNextQueue()
     }
-    
+
     private func handleNextQueue() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
@@ -129,11 +129,11 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
             item.show()
         }
     }
-    
+
     public func suspend() {
         isSuspended = true
     }
-    
+
     public func resume() {
         isSuspended = false
         handleNextQueue()
@@ -151,11 +151,11 @@ extension UIPresentCoordinator {
     public func enqueue(_ task: UIKitViewTask) {
         enqueue(type: .uiKit(.view(task)))
     }
-    
+
     public func enqueue(_ task: UIKitWIndowTask) {
         enqueue(type: .uiKit(.window(task)))
     }
-    
+
     private func enqueue(type: PresentingType) {
         queue.enqueue(type)
         handleNextQueue()

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 public enum UIKitPresentTask {
     case view(UIKitViewTask)
     case window(UIKitWIndowTask)
@@ -30,7 +29,7 @@ public struct UIKitViewTask: UIKitTask {
     public let controller: UIViewController
     public let animated: Bool
     public let completion: (() -> Void)?
-    
+
     public func show() {
         guard let topViewController = UIWindow.key?.topViewController() else {
             return
@@ -42,7 +41,7 @@ public struct UIKitViewTask: UIKitTask {
 
 public struct UIKitWIndowTask: UIKitTask {
     public let window: UIWindow
-    
+
     public func show() {
         window.isHidden = false
     }

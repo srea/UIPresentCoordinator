@@ -8,7 +8,7 @@
 public enum PresentingType {
     case swiftUI(SwiftUIPresentTask)
     case uiKit(UIKitPresentTask)
-    
+
     func show() {
         switch self {
         case .swiftUI(let task):

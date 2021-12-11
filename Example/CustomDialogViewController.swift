@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class CustomDialogViewController: UIViewController {
-    
+
     @IBOutlet weak var dialogView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dialogView.layer.cornerRadius = 10.0
@@ -32,9 +32,9 @@ extension CGFloat {
 extension UIColor {
     static func random() -> UIColor {
         return UIColor(
-           red:   .random(),
+           red: .random(),
            green: .random(),
-           blue:  .random(),
+           blue: .random(),
            alpha: 1.0
         )
     }
