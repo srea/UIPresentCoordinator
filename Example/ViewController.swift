@@ -29,9 +29,9 @@ class DemoViewController: UIViewController {
         super.viewDidLoad()
 
         UIPresentCoordinator.shared.interruptSuppressionTargets = [
-            UIPresentCoordinator.FirebaseInAppMessagingInterruption(),
-            UIPresentCoordinator.SystemAlertInterruption(),
-            UIPresentCoordinator.CustomClassInterruption.init(objects: [UIAlertController.self])
+            FirebaseInAppMessagingInterruptSuppression(),
+            SystemAlertInterruptSuppression(),
+            UserDefineInterruptSuppression.init(objects: [CustomDialogViewController.self])
         ]
         
         watchQueue()
