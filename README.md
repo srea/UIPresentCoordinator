@@ -50,6 +50,29 @@ pod 'UIPresentCoordinator'
 
 ## Usage
 
+### Option
+
+#### Queue control.
+
+```swift
+// Suspend queue processing.
+UIPresentCoordinator.shared.suspend()
+// Resume queue processing.
+UIPresentCoordinator.shared.resume()
+```
+
+#### Interrupt suppression.
+
+Set the class for automatic interrupt control.
+
+```swift
+UIPresentCoordinator.shared.interruptSuppressionTargets = [
+    FirebaseInAppMessagingInterruptSuppression(),
+    SystemAlertInterruptSuppression(),
+    UserDefineInterruptSuppression.init(objects: [CustomDialogViewController.self])
+]
+```
+
 ### UIKit
 
 #### Before
