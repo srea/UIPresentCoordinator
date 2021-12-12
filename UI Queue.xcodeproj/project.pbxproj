@@ -13,8 +13,8 @@
 		20D13D9627652440005E5EC3 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9527652440005E5EC3 /* FirebaseInAppMessaging-Beta */; };
 		20D13D9827652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9727652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta */; };
 		20D13D9B27657B1C005E5EC3 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9A27657B1C005E5EC3 /* SwiftMessages */; };
-		20D13D9D27659A3F005E5EC3 /* InterruptSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D13D9C27659A3F005E5EC3 /* InterruptSuppression.swift */; };
-		20D13DA227664280005E5EC3 /* FirebaseInAppMessagingInterruptSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D13DA127664280005E5EC3 /* FirebaseInAppMessagingInterruptSuppression.swift */; };
+		20D13DA3276644C3005E5EC3 /* InterruptSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D13D9C27659A3F005E5EC3 /* InterruptSuppression.swift */; };
+		20D13DA4276644CC005E5EC3 /* FirebaseInAppMessagingInterruptSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D13DA127664280005E5EC3 /* FirebaseInAppMessagingInterruptSuppression.swift */; };
 		20EC4F432757B5E300E7E0D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F422757B5E300E7E0D3 /* AppDelegate.swift */; };
 		20EC4F452757B5E300E7E0D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F442757B5E300E7E0D3 /* SceneDelegate.swift */; };
 		20EC4F472757B5E300E7E0D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F462757B5E300E7E0D3 /* ViewController.swift */; };
@@ -537,10 +537,8 @@
 			files = (
 				20EC4F472757B5E300E7E0D3 /* ViewController.swift in Sources */,
 				20EC4F432757B5E300E7E0D3 /* AppDelegate.swift in Sources */,
-				20D13DA227664280005E5EC3 /* FirebaseInAppMessagingInterruptSuppression.swift in Sources */,
 				20EC502D275EEB1A00E7E0D3 /* CustomDialogViewController.swift in Sources */,
 				20EC4F452757B5E300E7E0D3 /* SceneDelegate.swift in Sources */,
-				20D13D9D27659A3F005E5EC3 /* InterruptSuppression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,8 +567,10 @@
 				20EC5028275E265F00E7E0D3 /* PresentingTask.swift in Sources */,
 				20EC5026275E265F00E7E0D3 /* UIViewController+Extension.swift in Sources */,
 				20EC5025275E265F00E7E0D3 /* UIWindow+Extension.swift in Sources */,
+				20D13DA3276644C3005E5EC3 /* InterruptSuppression.swift in Sources */,
 				20EC5027275E265F00E7E0D3 /* UIKitPresentTask.swift in Sources */,
 				20EC502B275E266400E7E0D3 /* UIPresentCoordinator.swift in Sources */,
+				20D13DA4276644CC005E5EC3 /* FirebaseInAppMessagingInterruptSuppression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,8 +1046,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/srea/UIPresentCoordinator";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

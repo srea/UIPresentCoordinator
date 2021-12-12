@@ -24,7 +24,7 @@
         "repositoryURL": "git@github.com:firebase/firebase-ios-sdk.git",
         "state": {
           "branch": "master",
-          "revision": "cc549143f03409df955c588ac713d9f27587a25d",
+          "revision": "e5ec87b92944ed1dcf2497fda8355509c7390122",
           "version": null
         }
       },
@@ -122,9 +122,9 @@
         "package": "UIPresentCoordinator",
         "repositoryURL": "https://github.com/srea/UIPresentCoordinator",
         "state": {
-          "branch": "main",
-          "revision": "cf4a57bd6f5d1eabe8daa3c7d86b562103a1b401",
-          "version": null
+          "branch": null,
+          "revision": "c1321e62b6816e7737b1f43cb0c2a03f5ba4dd41",
+          "version": "0.1.1"
         }
       }
     ]
