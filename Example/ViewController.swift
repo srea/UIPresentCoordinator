@@ -28,7 +28,7 @@ class DemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UIPresentCoordinator.shared.interruptions = [
+        UIPresentCoordinator.shared.interruptSuppressionTargets = [
             UIPresentCoordinator.FirebaseInAppMessagingInterruption(),
             UIPresentCoordinator.SystemAlertInterruption(),
             UIPresentCoordinator.CustomClassInterruption.init(objects: [UIAlertController.self])

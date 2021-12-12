@@ -26,7 +26,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 
     public static let shared = UIPresentCoordinator.init()
 
-    public var interruptions: [Interruption] = []
+    public var interruptSuppressionTargets: [InterruptSuppression] = []
 
     public var waitingItems: Int {
         queue.count()
@@ -59,7 +59,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 
     func interruptSuppression(object: AnyObject) -> Bool {
         let type: AnyClass = type(of: object)
-        return !interruptions
+        return !interruptSuppressionTargets
             .filter {
                 !$0.classNames.filter { type === $0 }.isEmpty
             }
@@ -189,11 +189,11 @@ extension UIPresentCoordinator {
 }
 
 
-public protocol Interruption {
+public protocol InterruptSuppression {
     var classNames: [AnyClass] { get }
 }
 
-extension Interruption {
+extension InterruptSuppression {
     func addClassIfAvailable(list: inout [AnyClass], className: String) {
         guard let classType = NSClassFromString(className) else {
             return
@@ -205,7 +205,7 @@ extension Interruption {
 
 public extension UIPresentCoordinator {
 
-    struct SystemAlertInterruption: Interruption {
+    struct SystemAlertInterruption: InterruptSuppression {
 
         public var classNames: [AnyClass] = []
         
@@ -216,7 +216,7 @@ public extension UIPresentCoordinator {
         }
     }
 
-    struct FirebaseInAppMessagingInterruption: Interruption {
+    struct FirebaseInAppMessagingInterruption: InterruptSuppression {
 
         public var classNames: [AnyClass] = []
 
@@ -228,7 +228,7 @@ public extension UIPresentCoordinator {
         }
     }
     
-    struct CustomClassInterruption: Interruption {
+    struct CustomClassInterruption: InterruptSuppression {
         public var classNames: [AnyClass] = []
         
         public init(objects: [AnyClass]) {
