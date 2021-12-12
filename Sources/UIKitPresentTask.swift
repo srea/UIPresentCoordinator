@@ -34,7 +34,7 @@ public struct UIKitViewTask: UIKitTask {
         guard let topViewController = UIWindow.key?.topViewController() else {
             return
         }
-        topViewController.present(controller, animated: animated, completion: completion)
+        topViewController.presentForce(controller, animated: animated, completion: completion)
     }
 
 }
@@ -44,5 +44,9 @@ public struct UIKitWIndowTask: UIKitTask {
 
     public func show() {
         window.isHidden = false
+    }
+    
+    public func hide() {
+        UIWindow._present_coordinator_isHidden_Internal.remove(window.hash)
     }
 }

@@ -12,11 +12,9 @@ import SwiftUI
 public protocol UIPresentCoordinatable {
 
     func enqueue(_ task: SwiftUIPresentTask)
-    func enqueue(_ task: UIKitViewTask)
-    func enqueue(_ task: UIKitWIndowTask)
+    func enqueue(_ task: UIKitPresentTask)
 
     func dequeue() -> Alert
-    func dequeue() -> AnyView
 
     func suspend()
     func resume()
@@ -28,7 +26,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 
     public static let shared = UIPresentCoordinator.init()
 
-    public var suspendInterruptDefaultAlert: Bool = true
+    public var interruptions: [Interruption] = []
 
     public var waitingItems: Int {
         queue.count()
@@ -36,9 +34,9 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 
     private var isSuspended: Bool = true
     private var isPresenting: Bool = false
-    private var queue = Queue<PresentingType>()
+    private var queue = Queue<PresentingTask>()
 
-    private weak var storeKitWindow: AnyObject?
+    private weak var presentingWindow: AnyObject?
 
     public init() {
         UIWindow.present_coordinator_swizzle()
@@ -59,14 +57,21 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
         NotificationCenter.default.removeObserver(self)
     }
 
+    func interruptSuppression(object: AnyObject) -> Bool {
+        let type: AnyClass = type(of: object)
+        return !interruptions
+            .filter {
+                !$0.classNames.filter { type === $0 }.isEmpty
+            }
+            .isEmpty
+    }
+    
     @objc func windowDidBecomeVisible(notification: Notification) {
         guard let window = notification.object as? UIWindow else {
             return
         }
-        let className = String(describing: type(of: window))
-
-        if className.contains("SKStoreReviewPresentationWindow") {
-            storeKitWindow = notification.object as AnyObject
+        if interruptSuppression(object: window) {
+            presentingWindow = notification.object as AnyObject
         }
     }
 
@@ -74,9 +79,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
         guard let window = notification.object as? UIWindow else {
             return
         }
-        UIWindow._present_coordinator_isHidden_Internal.remove(window.hash)
         dismissed()
-        _ = String(describing: type(of: window))
     }
 
     public func flush() {
@@ -91,8 +94,13 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 
         isPresenting = false
 
-        // for SwiftUI State Hidden
-        if case .swiftUI(let task) = queue.dequeue() {
+        let item = queue.dequeue()
+
+        if case .swiftUI(let task) = item {
+            task.hide()
+        }
+        
+        if case .uiKit(.window(let task)) = item {
             task.hide()
         }
 
@@ -104,7 +112,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
             guard let self = self else {
                 return
             }
-            guard self.storeKitWindow == nil else {
+            guard self.presentingWindow == nil else {
                 return
             }
             guard !self.isSuspended else {
@@ -114,13 +122,6 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
                 return
             }
             guard let item = self.queue.peek() else {
-                return
-            }
-            guard let topViewController = UIWindow.key?.topViewController() else {
-                return
-            }
-
-            if self.suspendInterruptDefaultAlert && topViewController is UIAlertController {
                 return
             }
 
@@ -148,15 +149,11 @@ extension UIPresentCoordinator {
         enqueue(type: .swiftUI(task))
     }
 
-    public func enqueue(_ task: UIKitViewTask) {
-        enqueue(type: .uiKit(.view(task)))
+    public func enqueue(_ task: UIKitPresentTask) {
+        enqueue(type: .uiKit(task))
     }
 
-    public func enqueue(_ task: UIKitWIndowTask) {
-        enqueue(type: .uiKit(.window(task)))
-    }
-
-    private func enqueue(type: PresentingType) {
+    private func enqueue(type: PresentingTask) {
         queue.enqueue(type)
         handleNextQueue()
     }
@@ -164,7 +161,7 @@ extension UIPresentCoordinator {
 
 /// Dequeue
 extension UIPresentCoordinator {
-    public func dequeue() -> AnyView {
+    public func dequeue() -> some View {
         guard case .swiftUI(let alert) = queue.peek() else {
             fatalError()
         }
@@ -188,5 +185,54 @@ extension UIPresentCoordinator {
             fatalError()
         }
         return ui
+    }
+}
+
+
+public protocol Interruption {
+    var classNames: [AnyClass] { get }
+}
+
+extension Interruption {
+    func addClassIfAvailable(list: inout [AnyClass], className: String) {
+        guard let classType = NSClassFromString(className) else {
+            return
+        }
+        list.append(classType)
+    }
+}
+
+
+public extension UIPresentCoordinator {
+
+    struct SystemAlertInterruption: Interruption {
+
+        public var classNames: [AnyClass] = []
+        
+        public init() {
+            addClassIfAvailable(list: &classNames, className: "UIAlertController")
+            addClassIfAvailable(list: &classNames, className: "SwiftUI.PlatformAlertController")
+            addClassIfAvailable(list: &classNames, className: "SKStoreReviewPresentationWindow")
+        }
+    }
+
+    struct FirebaseInAppMessagingInterruption: Interruption {
+
+        public var classNames: [AnyClass] = []
+
+        public init() {
+            addClassIfAvailable(list: &classNames, className: "FIRIAMImageOnlyViewController")
+            addClassIfAvailable(list: &classNames, className: "FIRIAMBannerViewController")
+            addClassIfAvailable(list: &classNames, className: "FIRIAMModalViewController")
+            addClassIfAvailable(list: &classNames, className: "FIRIAMCardViewController")
+        }
+    }
+    
+    struct CustomClassInterruption: Interruption {
+        public var classNames: [AnyClass] = []
+        
+        public init(objects: [AnyClass]) {
+            classNames.append(contentsOf: objects)
+        }
     }
 }

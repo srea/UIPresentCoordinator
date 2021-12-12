@@ -61,6 +61,18 @@ extension UIWindow {
             self._present_coordinator_isHidden
         }
         set {
+            guard !isKeyWindow else {
+                self._present_coordinator_isHidden = newValue
+                return
+            }
+            guard let vc = rootViewController else {
+                self._present_coordinator_isHidden = newValue
+                return
+            }
+            guard UIPresentCoordinator.shared.interruptSuppression(object: vc) else {
+                self._present_coordinator_isHidden = newValue
+                return
+            }
             guard !newValue else {
                 self._present_coordinator_isHidden = newValue
                 UIWindow._present_coordinator_isHidden_Internal.remove(hash)
@@ -70,7 +82,7 @@ extension UIWindow {
             if UIWindow._present_coordinator_isHidden_Internal.contains(hash) {
                 self._present_coordinator_isHidden = false
             } else {
-                UIPresentCoordinator.shared.enqueue(.init(window: self))
+                UIPresentCoordinator.shared.enqueue(.window(.init(window: self)))
                 UIWindow._present_coordinator_isHidden_Internal.insert(hash)
             }
         }

@@ -13,6 +13,7 @@ import UserNotifications
 import AppTrackingTransparency
 import CoreLocation
 import FirebaseAnalytics
+import SwiftMessages
 
 class DemoViewController: UIViewController {
 
@@ -27,6 +28,12 @@ class DemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        UIPresentCoordinator.shared.interruptions = [
+            UIPresentCoordinator.FirebaseInAppMessagingInterruption(),
+            UIPresentCoordinator.SystemAlertInterruption(),
+            UIPresentCoordinator.CustomClassInterruption.init(objects: [UIAlertController.self])
+        ]
+        
         watchQueue()
 
         let debugView = DebugView.init {  }
@@ -40,7 +47,6 @@ class DemoViewController: UIViewController {
         vc.didMove(toParent: self)
 
         swiftUIDebugView = debugView
-        UIPresentCoordinator.shared.suspendInterruptDefaultAlert = true
 
     }
 
@@ -210,7 +216,7 @@ class DemoViewController: UIViewController {
 
 struct DebugView: View {
 
-    private let presentCoordinator: UIPresentCoordinatable = UIPresentCoordinator.shared
+    private let presentCoordinator: UIPresentCoordinator = UIPresentCoordinator.shared
 
     // Interrupt
     @State private var isPresentedAlert = false

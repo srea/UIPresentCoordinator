@@ -26,20 +26,27 @@ extension UIViewController {
         swizzleMethod(#selector(UIViewController.viewDidDisappear(_:)),
                       #selector(UIViewController._present_coordinator_viewDidDisappear(_:)))
         swizzleMethod(#selector(UIViewController.present(_:animated:completion:)),
-                      #selector(UIViewController._present_coordinator_present(_:animated:completion:)))
+                      #selector(UIViewController._present_coordinator_present(_:animated:completion:force:)))
     }
 
     public func presentQueue(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
-        UIPresentCoordinator.shared.enqueue(.init(controller: viewController,
-                                                  animated: animated,
-                                                  completion: completion))
+        UIPresentCoordinator.shared.enqueue(.view(.init(controller: viewController,
+                                                        animated: animated,
+                                                        completion: completion)))
     }
 
-    @objc private func _present_coordinator_present(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
-        self._present_coordinator_present(viewController, animated: animated, completion: completion)
-        let name = String.init(describing: type(of: viewController))
-        print(name)
-        // StoreKit: SKStoreReviewViewController
+    internal func presentForce(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
+        self._present_coordinator_present(viewController, animated: animated, completion: completion, force: true)
+    }
+    
+    @objc private func _present_coordinator_present(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil, force: Bool = false) {
+        if !force && UIPresentCoordinator.shared.interruptSuppression(object: viewController) {
+            UIPresentCoordinator.shared.enqueue(.view(.init(controller: viewController,
+                                                            animated: animated,
+                                                            completion: completion)))
+        } else {
+            self._present_coordinator_present(viewController, animated: animated, completion: completion)
+        }
     }
 
     @objc private func _present_coordinator_viewDidDisappear(_ animated: Bool) {
