@@ -21,7 +21,7 @@ extension InterruptSuppression {
     }
 }
 
-struct SystemAlertInterruptSuppression: InterruptSuppression {
+public struct SystemAlertInterruptSuppression: InterruptSuppression {
     
     public var classNames: [AnyClass] = []
     
@@ -32,7 +32,7 @@ struct SystemAlertInterruptSuppression: InterruptSuppression {
     }
 }
 
-struct UserDefineInterruptSuppression: InterruptSuppression {
+public struct UserDefineInterruptSuppression: InterruptSuppression {
     public var classNames: [AnyClass] = []
     
     public init(objects: [AnyClass]) {

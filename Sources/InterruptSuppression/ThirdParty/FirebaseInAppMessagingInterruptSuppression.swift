@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FirebaseInAppMessagingInterruptSuppression: InterruptSuppression {
+public struct FirebaseInAppMessagingInterruptSuppression: InterruptSuppression {
     
     public var classNames: [AnyClass] = []
     
