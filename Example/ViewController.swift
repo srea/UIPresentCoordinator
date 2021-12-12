@@ -12,22 +12,30 @@ import StoreKit
 import UserNotifications
 import AppTrackingTransparency
 import CoreLocation
+import FirebaseAnalytics
+import SwiftMessages
 
 class DemoViewController: UIViewController {
-    
+
     private let locationManager = CLLocationManager()
-    
+
     @IBOutlet weak var queueItemLabel: UILabel!
-    
+
     private var swiftUIDebugView: DebugView?
-    
+
     @IBOutlet weak var swiftUIView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        UIPresentCoordinator.shared.interruptSuppressionTargets = [
+            FirebaseInAppMessagingInterruptSuppression(),
+            SystemAlertInterruptSuppression(),
+            UserDefineInterruptSuppression.init(objects: [CustomDialogViewController.self])
+        ]
         
         watchQueue()
-        
+
         let debugView = DebugView.init {  }
 
         let vc = UIHostingController.init(rootView: debugView)
@@ -35,14 +43,13 @@ class DemoViewController: UIViewController {
         swiftUIView.addSubview(vc.view)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         vc.view.pinEdges(to: swiftUIView)
-        
+
         vc.didMove(toParent: self)
-        
+
         swiftUIDebugView = debugView
-        UIPresentCoordinator.shared.suspendInterruptDefaultAlert = true
-        
+
     }
-    
+
     @IBAction func suspendSwitchDidChange(_ sender: UISwitch) {
         if sender.isOn {
             UIPresentCoordinator.shared.suspend()
@@ -50,33 +57,35 @@ class DemoViewController: UIViewController {
             UIPresentCoordinator.shared.resume()
         }
     }
-    
+
     private func watchQueue() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             self?.queueItemLabel.text = "Waiting items: \(UIPresentCoordinator.shared.waitingItems) "
             self?.watchQueue()
         }
     }
-    
+
     // Interrupt
-    
+
     @IBAction func showUIKitAlert(_ sender: Any) {
         showUIKit(style: .alert, useQueue: false)
     }
-    
+
     @IBAction func showUIKitSheet(_ sender: Any) {
         showUIKitPresent(useQueue: false)
     }
-    
+
     // Queue
-    
+
     @IBAction func showUIKitAlertQueue(_ sender: Any) {
         showUIKit(style: .alert, useQueue: true)
     }
-    
+
     @IBAction func showUIKitSheetQueue(_ sender: Any) {
         showUIKitPresent(useQueue: true)
     }
+
+    // System
 
     @IBAction func requestReviewDidTap(_ sender: Any) {
         requestReview()
@@ -85,7 +94,7 @@ class DemoViewController: UIViewController {
     @IBAction func requestRemoteNotificationDidTap(_ sender: Any) {
         requestAPNS()
     }
-    
+
     @IBAction func requestIDFADidTap(_ sender: Any) {
         requestIDFA()
     }
@@ -94,15 +103,27 @@ class DemoViewController: UIViewController {
         requestGPS()
     }
 
+    @IBAction func requestInAppMessaging(_ sender: Any) {
+        Analytics.logEvent("show_in_app_messaging", parameters: nil)
+    }
+
+    @IBAction func requestInAppMessaging2(_ sender: Any) {
+        Analytics.logEvent("show_in_app_messaging_b", parameters: nil)
+    }
+
+    @IBAction func requestInAppMessaging3(_ sender: Any) {
+        Analytics.logEvent("show_in_app_messaging_c", parameters: nil)
+    }
+
     // Common
-    
+
     private func showUIKit(style: UIAlertController.Style, useQueue: Bool) {
         let alert = UIAlertController.init(
             title: "UIKit",
             message: "\(useQueue ? "Queue" : "Interrupt")",
             preferredStyle: style)
         alert.addAction(.init(title: "close", style: .default, handler: nil))
-        
+
         if useQueue {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
                 self?.presentQueue(alert, animated: true, completion: nil)
@@ -111,7 +132,7 @@ class DemoViewController: UIViewController {
             present(alert, animated: true, completion: nil)
         }
     }
-    
+
     private func requestReview() {
         if let scene = view.window?.windowScene {
             if #available(iOS 14.0, *) {
@@ -121,17 +142,17 @@ class DemoViewController: UIViewController {
             }
         }
     }
-    
+
     private func requestAPNS() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {(granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {(granted, _) in
             if granted {
-                DispatchQueue.main.async() {
+                DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
                 }
             }
         })
     }
-    
+
     private func requestIDFA() {
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
@@ -145,9 +166,9 @@ class DemoViewController: UIViewController {
     private func requestGPS() {
         locationManager.requestAlwaysAuthorization()
     }
-    
+
     private func showUIKitPresent(useQueue: Bool) {
-        
+
         guard let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "CustomDialog") as? CustomDialogViewController else {
             return
         }
@@ -171,50 +192,49 @@ class DemoViewController: UIViewController {
             present(viewController, animated: true, completion: nil)
         }
     }
-    
+
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             confirmFlushQueue()
         }
     }
-    
+
     private func confirmFlushQueue() {
         let alert = UIAlertController.init(title: "Confirm", message: "Flush queue?", preferredStyle: .actionSheet)
-        
+
         alert.addAction(.init(title: "ok", style: .destructive, handler: { _ in
             UIPresentCoordinator.shared.flush()
         }))
-        
+
         alert.addAction(.init(title: "cancel", style: .default, handler: { _ in
         }))
 
         presentQueue(alert, animated: true)
     }
-    
+
 }
 
-
 struct DebugView: View {
-    
-    private let presentCoordinator: UIPresentCoordinatable = UIPresentCoordinator.shared
+
+    private let presentCoordinator: UIPresentCoordinator = UIPresentCoordinator.shared
 
     // Interrupt
     @State private var isPresentedAlert = false
     @State private var isPresentedSheet = false
-    
+
     // Queue
     @ObservedObject private var alertTask = Task<Alert>()
     @ObservedObject private var sheetTask = Task<AnyView>()
     @ObservedObject private var listAlertTask = Task<Alert>()
 
-    private let showAlert: (()->Void)?
-    
+    private let showAlert: (() -> Void)?
+
     mutating func showSwiftUIAlert() {
         self.isPresentedAlert = true
 //        self.presentCoordinator.enqueue(.alert(alertTask))
     }
 
-    init(showAlert: (()->Void)?) {
+    init(showAlert: (() -> Void)?) {
         self.showAlert = showAlert
         _ = alertTask.content {
             Alert(title: Text("SwiftUI + Alert"), message: Text("Queue"))
@@ -228,13 +248,13 @@ struct DebugView: View {
             )
         }
     }
-    
+
     var body: some View {
 
-        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 8) {
+        VStack(alignment: .center/*@END_MENU_TOKEN@*/, spacing: 8) {
             // Interrupt
             Text("Interrupt")
-            
+
             // Alert
             Button("Show SwiftUI + Alert", action: {
                 self.isPresentedAlert = true
@@ -242,7 +262,7 @@ struct DebugView: View {
             .alert(isPresented: self.$isPresentedAlert) {
                 Alert(title: Text("SwiftUI + Alert"), message: Text("Interrupt"))
             }
-            
+
             // Sheet
             Button("Show SwiftUI + Sheet", action: {
                 self.isPresentedSheet = true
@@ -254,7 +274,7 @@ struct DebugView: View {
             }
 
             Text("Queue")
-            
+
             Button("Show SwiftUI + Alert", action: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
                     presentCoordinator.enqueue(.alert(alertTask))
@@ -263,7 +283,7 @@ struct DebugView: View {
             .alert(isPresented: $alertTask.isPresented) {
                 presentCoordinator.dequeue()
             }
-            
+
             Button("Show SwiftUI + Sheet", action: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
                     presentCoordinator.enqueue(.view(sheetTask))

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20D13D8F2765180C005E5EC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20D13D8E2765180C005E5EC3 /* GoogleService-Info.plist */; };
+		20D13D9227652440005E5EC3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9127652440005E5EC3 /* FirebaseAnalytics */; };
+		20D13D9427652440005E5EC3 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9327652440005E5EC3 /* FirebaseAnalyticsSwift-Beta */; };
+		20D13D9627652440005E5EC3 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9527652440005E5EC3 /* FirebaseInAppMessaging-Beta */; };
+		20D13D9827652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9727652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta */; };
+		20D13D9B27657B1C005E5EC3 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 20D13D9A27657B1C005E5EC3 /* SwiftMessages */; };
+		20D13D9D27659A3F005E5EC3 /* InterruptSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D13D9C27659A3F005E5EC3 /* InterruptSuppression.swift */; };
 		20EC4F432757B5E300E7E0D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F422757B5E300E7E0D3 /* AppDelegate.swift */; };
 		20EC4F452757B5E300E7E0D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F442757B5E300E7E0D3 /* SceneDelegate.swift */; };
 		20EC4F472757B5E300E7E0D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC4F462757B5E300E7E0D3 /* ViewController.swift */; };
@@ -23,7 +30,7 @@
 		20EC5025275E265F00E7E0D3 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC5018275E265500E7E0D3 /* UIWindow+Extension.swift */; };
 		20EC5026275E265F00E7E0D3 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC5019275E265500E7E0D3 /* UIViewController+Extension.swift */; };
 		20EC5027275E265F00E7E0D3 /* UIKitPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501B275E265500E7E0D3 /* UIKitPresentTask.swift */; };
-		20EC5028275E265F00E7E0D3 /* PresentingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501A275E265500E7E0D3 /* PresentingType.swift */; };
+		20EC5028275E265F00E7E0D3 /* PresentingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501A275E265500E7E0D3 /* PresentingTask.swift */; };
 		20EC5029275E265F00E7E0D3 /* SwiftUIPresentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */; };
 		20EC502A275E265F00E7E0D3 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC501C275E265500E7E0D3 /* Queue.swift */; };
 		20EC502B275E266400E7E0D3 /* UIPresentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC5016275E265500E7E0D3 /* UIPresentCoordinator.swift */; };
@@ -83,6 +90,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		20D13D8E2765180C005E5EC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20D13D9C27659A3F005E5EC3 /* InterruptSuppression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterruptSuppression.swift; sourceTree = "<group>"; };
 		20EC4F3F2757B5E300E7E0D3 /* UI Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UI Queue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20EC4F422757B5E300E7E0D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20EC4F442757B5E300E7E0D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +119,7 @@
 		20EC5016275E265500E7E0D3 /* UIPresentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPresentCoordinator.swift; sourceTree = "<group>"; };
 		20EC5018275E265500E7E0D3 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		20EC5019275E265500E7E0D3 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		20EC501A275E265500E7E0D3 /* PresentingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentingType.swift; sourceTree = "<group>"; };
+		20EC501A275E265500E7E0D3 /* PresentingTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentingTask.swift; sourceTree = "<group>"; };
 		20EC501B275E265500E7E0D3 /* UIKitPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitPresentTask.swift; sourceTree = "<group>"; };
 		20EC501C275E265500E7E0D3 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPresentTask.swift; sourceTree = "<group>"; };
@@ -122,7 +131,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D13D9427652440005E5EC3 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
+				20D13D9227652440005E5EC3 /* FirebaseAnalytics in Frameworks */,
+				20D13D9827652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				20EC500D275E263900E7E0D3 /* UIPresentCoordinator.framework in Frameworks */,
+				20D13D9B27657B1C005E5EC3 /* SwiftMessages in Frameworks */,
+				20D13D9627652440005E5EC3 /* FirebaseInAppMessaging-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +172,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20D13D9E27663FBE005E5EC3 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				20EC501A275E265500E7E0D3 /* PresentingTask.swift */,
+				20EC501B275E265500E7E0D3 /* UIKitPresentTask.swift */,
+				20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
 		20EC4F362757B5E300E7E0D3 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +220,7 @@
 				20EC4F4B2757B5E400E7E0D3 /* Assets.xcassets */,
 				20EC4F4D2757B5E400E7E0D3 /* LaunchScreen.storyboard */,
 				20EC4F502757B5E400E7E0D3 /* Info.plist */,
+				20D13D8E2765180C005E5EC3 /* GoogleService-Info.plist */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -259,10 +284,9 @@
 			children = (
 				20EC5016275E265500E7E0D3 /* UIPresentCoordinator.swift */,
 				20EC5017275E265500E7E0D3 /* Extensions */,
-				20EC501A275E265500E7E0D3 /* PresentingType.swift */,
-				20EC501B275E265500E7E0D3 /* UIKitPresentTask.swift */,
+				20D13D9E27663FBE005E5EC3 /* Task */,
+				20D13D9C27659A3F005E5EC3 /* InterruptSuppression.swift */,
 				20EC501C275E265500E7E0D3 /* Queue.swift */,
-				20EC501D275E265500E7E0D3 /* SwiftUIPresentTask.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -305,6 +329,13 @@
 				20EC500C275E263900E7E0D3 /* PBXTargetDependency */,
 			);
 			name = "UI Queue";
+			packageProductDependencies = (
+				20D13D9127652440005E5EC3 /* FirebaseAnalytics */,
+				20D13D9327652440005E5EC3 /* FirebaseAnalyticsSwift-Beta */,
+				20D13D9527652440005E5EC3 /* FirebaseInAppMessaging-Beta */,
+				20D13D9727652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta */,
+				20D13D9A27657B1C005E5EC3 /* SwiftMessages */,
+			);
 			productName = "UI Queue";
 			productReference = 20EC4F3F2757B5E300E7E0D3 /* UI Queue.app */;
 			productType = "com.apple.product-type.application";
@@ -422,6 +453,8 @@
 			mainGroup = 20EC4F362757B5E300E7E0D3;
 			packageReferences = (
 				20EC4FD9275E235D00E7E0D3 /* XCRemoteSwiftPackageReference "UIPresentCoordinator" */,
+				20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				20D13D9927657B1C005E5EC3 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 			);
 			productRefGroup = 20EC4F402757B5E300E7E0D3 /* Products */;
 			projectDirPath = "";
@@ -442,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20EC4F4F2757B5E400E7E0D3 /* LaunchScreen.storyboard in Resources */,
+				20D13D8F2765180C005E5EC3 /* GoogleService-Info.plist in Resources */,
 				20EC4F4C2757B5E400E7E0D3 /* Assets.xcassets in Resources */,
 				20EC4F4A2757B5E300E7E0D3 /* Main.storyboard in Resources */,
 			);
@@ -486,6 +520,7 @@
 				20EC4F432757B5E300E7E0D3 /* AppDelegate.swift in Sources */,
 				20EC502D275EEB1A00E7E0D3 /* CustomDialogViewController.swift in Sources */,
 				20EC4F452757B5E300E7E0D3 /* SceneDelegate.swift in Sources */,
+				20D13D9D27659A3F005E5EC3 /* InterruptSuppression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +546,7 @@
 			files = (
 				20EC5029275E265F00E7E0D3 /* SwiftUIPresentTask.swift in Sources */,
 				20EC502A275E265F00E7E0D3 /* Queue.swift in Sources */,
-				20EC5028275E265F00E7E0D3 /* PresentingType.swift in Sources */,
+				20EC5028275E265F00E7E0D3 /* PresentingTask.swift in Sources */,
 				20EC5026275E265F00E7E0D3 /* UIViewController+Extension.swift in Sources */,
 				20EC5025275E265F00E7E0D3 /* UIWindow+Extension.swift in Sources */,
 				20EC5027275E265F00E7E0D3 /* UIKitPresentTask.swift in Sources */,
@@ -971,6 +1006,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		20D13D9927657B1C005E5EC3 /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:SwiftKickMobile/SwiftMessages.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		20EC4FD9275E235D00E7E0D3 /* XCRemoteSwiftPackageReference "UIPresentCoordinator" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/srea/UIPresentCoordinator";
@@ -980,6 +1031,34 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20D13D9127652440005E5EC3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		20D13D9327652440005E5EC3 /* FirebaseAnalyticsSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAnalyticsSwift-Beta";
+		};
+		20D13D9527652440005E5EC3 /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		20D13D9727652440005E5EC3 /* FirebaseInAppMessagingSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9027652440005E5EC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessagingSwift-Beta";
+		};
+		20D13D9A27657B1C005E5EC3 /* SwiftMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20D13D9927657B1C005E5EC3 /* XCRemoteSwiftPackageReference "SwiftMessages" */;
+			productName = SwiftMessages;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20EC4F372757B5E300E7E0D3 /* Project object */;
 }

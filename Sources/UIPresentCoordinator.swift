@@ -10,15 +10,12 @@ import Combine
 import SwiftUI
 
 public protocol UIPresentCoordinatable {
-    
-    // SwiftUI
-    func enqueue(_ task: SwiftUIPresentTask)
-    func dequeue() -> Alert
-    func dequeue() -> AnyView
 
-    // UIKit
-    func enqueue(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?)
-    
+    func enqueue(_ task: SwiftUIPresentTask)
+    func enqueue(_ task: UIKitPresentTask)
+
+    func dequeue() -> Alert
+
     func suspend()
     func resume()
 
@@ -26,62 +23,67 @@ public protocol UIPresentCoordinatable {
 }
 
 public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatable {
-    
+
     public static let shared = UIPresentCoordinator.init()
 
-    public var suspendInterruptDefaultAlert: Bool = true
-    
+    public var interruptSuppressionTargets: [InterruptSuppression] = []
+
     public var waitingItems: Int {
         queue.count()
     }
 
-    private var isSuspended: Bool = false
+    private var isSuspended: Bool = true
     private var isPresenting: Bool = false
-    private var queue = Queue<PresentingType>()
-    
-    private weak var storeKitWindow: AnyObject?
+    private var queue = Queue<PresentingTask>()
+
+    private weak var presentingWindow: AnyObject?
 
     public init() {
+        UIWindow.present_coordinator_swizzle()
         UIViewController.present_coordinator_swizzle()
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(windowDidBecomeVisible(notification:)),
                                                name: UIWindow.didBecomeVisibleNotification,
                                                object: nil)
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(windowDidBecomeHidden(notification:)),
                                                name: UIWindow.didBecomeHiddenNotification,
                                                object: nil)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-    @objc func windowDidBecomeVisible(notification: Notification) {
-        guard let window = notification.object else {
-            return
-        }
-        let className = String(describing: type(of: window))
-        
-        if className.contains("SKStoreReviewPresentationWindow") {
-            storeKitWindow = notification.object as AnyObject
-        }
+
+    func interruptSuppression(object: AnyObject) -> Bool {
+        let type: AnyClass = type(of: object)
+        return !interruptSuppressionTargets
+            .filter {
+                !$0.classNames.filter { type === $0 }.isEmpty
+            }
+            .isEmpty
     }
     
-    @objc func windowDidBecomeHidden(notification: Notification) {
-        guard let window = notification.object else {
+    @objc func windowDidBecomeVisible(notification: Notification) {
+        guard let window = notification.object as? UIWindow else {
             return
         }
-        _ = String(describing: type(of: window))
+        if interruptSuppression(object: window) {
+            presentingWindow = notification.object as AnyObject
+        }
+    }
+
+    @objc func windowDidBecomeHidden(notification: Notification) {
+        dismissed()
     }
 
     public func flush() {
         queue.clearAll()
     }
 
-    public func dismissed(_ viewController: UIViewController) {
+    public func dismissed() {
         guard isPresenting else {
             handleNextQueue()
             return
@@ -89,20 +91,25 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 
         isPresenting = false
 
-        // for SwiftUI State Hidden
-        if case .swiftUI(let task) = queue.dequeue() {
+        let item = queue.dequeue()
+
+        if case .swiftUI(let task) = item {
+            task.hide()
+        }
+        
+        if case .uiKit(.window(let task)) = item {
             task.hide()
         }
 
         handleNextQueue()
     }
-    
+
     private func handleNextQueue() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
             }
-            guard self.storeKitWindow == nil else {
+            guard self.presentingWindow == nil else {
                 return
             }
             guard !self.isSuspended else {
@@ -114,24 +121,17 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
             guard let item = self.queue.peek() else {
                 return
             }
-            guard let topViewController = UIWindow.key?.topViewController() else {
-                return
-            }
-
-            if self.suspendInterruptDefaultAlert && topViewController is UIAlertController {
-                return
-            }
 
             self.isPresenting = true
 
             item.show()
         }
     }
-    
+
     public func suspend() {
         isSuspended = true
     }
-    
+
     public func resume() {
         isSuspended = false
         handleNextQueue()
@@ -143,19 +143,22 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 extension UIPresentCoordinator {
     public func enqueue(_ task: SwiftUIPresentTask) {
         // FIXME: 同一TASKが入るとだめ
-        queue.enqueue(.swiftUI(task))
-        handleNextQueue()
+        enqueue(type: .swiftUI(task))
     }
 
-    public func enqueue(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
-        queue.enqueue(.uiKit(.init(controller: viewController, animated: animated, completion: completion)))
+    public func enqueue(_ task: UIKitPresentTask) {
+        enqueue(type: .uiKit(task))
+    }
+
+    private func enqueue(type: PresentingTask) {
+        queue.enqueue(type)
         handleNextQueue()
     }
 }
 
 /// Dequeue
 extension UIPresentCoordinator {
-    public func dequeue() -> AnyView {
+    public func dequeue() -> some View {
         guard case .swiftUI(let alert) = queue.peek() else {
             fatalError()
         }

@@ -9,11 +9,11 @@ import Foundation
 
 struct Queue<T> {
     private var elements: [T] = []
-    
+
     mutating func enqueue(_ element: T) {
         elements.append(element)
     }
-    
+
     mutating func dequeue() -> T? {
         guard !elements.isEmpty else {
             return nil
@@ -28,11 +28,11 @@ struct Queue<T> {
     func isEmpty() -> Bool {
         elements.isEmpty
     }
-    
+
     func peek() -> T? {
         elements.first
     }
-    
+
     func count() -> Int {
         elements.count
     }
