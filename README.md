@@ -138,6 +138,10 @@ struct DebugView: View {
 
 Your ideas, bug fixes, improvements, etc. are all welcome. 🐢
 
+## Special Thanks
+
+- [@daidongon](https://github.com/daidongon)
+
 ## License
 
 UIPresentCoordinator is licensed under the MIT license. See [LICENSE](https://github.com/srea/UIPresentCoordinator/blob/main/LICENSE) for more info.
