@@ -8,13 +8,14 @@
 import Foundation
 
 public struct FirebaseInAppMessagingInterruptSuppression: InterruptSuppression {
-    
-    public var classNames: [AnyClass] = []
-    
+
+    private(set) public var classTypes: [AnyClass] = []
+    private(set) public var classNames: [String] = []
+
     public init() {
-        addClassIfAvailable(list: &classNames, className: "FIRIAMImageOnlyViewController")
-        addClassIfAvailable(list: &classNames, className: "FIRIAMBannerViewController")
-        addClassIfAvailable(list: &classNames, className: "FIRIAMModalViewController")
-        addClassIfAvailable(list: &classNames, className: "FIRIAMCardViewController")
+        addClassIfAvailable(list: &classTypes, className: "FIRIAMImageOnlyViewController")
+        addClassIfAvailable(list: &classTypes, className: "FIRIAMBannerViewController")
+        addClassIfAvailable(list: &classTypes, className: "FIRIAMModalViewController")
+        addClassIfAvailable(list: &classTypes, className: "FIRIAMCardViewController")
     }
 }

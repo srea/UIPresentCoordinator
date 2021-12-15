@@ -8,7 +8,7 @@
 import Foundation
 
 struct Queue<T> {
-    private var elements: [T] = []
+    var elements: [T] = []
 
     mutating func enqueue(_ element: T) {
         elements.append(element)

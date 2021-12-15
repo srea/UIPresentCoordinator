@@ -61,11 +61,12 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
         let type: AnyClass = type(of: object)
         return !interruptSuppressionTargets
             .filter {
-                !$0.classNames.filter { type === $0 }.isEmpty
+                !$0.classTypes.filter { type === $0 }.isEmpty ||
+                !$0.classNames.filter { NSStringFromClass(type).contains($0) }.isEmpty
             }
             .isEmpty
     }
-    
+
     @objc func windowDidBecomeVisible(notification: Notification) {
         guard let window = notification.object as? UIWindow else {
             return
@@ -96,7 +97,7 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
         if case .swiftUI(let task) = item {
             task.hide()
         }
-        
+
         if case .uiKit(.window(let task)) = item {
             task.hide()
         }
@@ -141,6 +142,24 @@ public final class UIPresentCoordinator: ObservableObject, UIPresentCoordinatabl
 
 /// Enqueue
 extension UIPresentCoordinator {
+
+    func shouldEnqueue(object: AnyObject) -> Bool {
+        
+        guard interruptSuppression(object: object) else {
+            return false
+        }
+        guard !isSuspended else {
+            return true
+        }
+        guard !queue.isEmpty() else {
+            return true
+        }
+        guard case .swiftUI = queue.peek() else {
+            return true
+        }
+        return false
+    }
+
     public func enqueue(_ task: SwiftUIPresentTask) {
         // FIXME: 同一TASKが入るとだめ
         enqueue(type: .swiftUI(task))
@@ -159,26 +178,14 @@ extension UIPresentCoordinator {
 /// Dequeue
 extension UIPresentCoordinator {
     public func dequeue() -> some View {
-        guard case .swiftUI(let alert) = queue.peek() else {
-            fatalError()
-        }
-        guard case .view(let task) = alert else {
-            fatalError()
-        }
-        guard let ui = task.content else {
+        guard case .swiftUI(.view(let task)) = queue.peek(), let ui = task.content else {
             fatalError()
         }
         return ui
     }
 
     public func dequeue() -> Alert {
-        guard case .swiftUI(let alert) = queue.peek() else {
-            fatalError()
-        }
-        guard case .alert(let task) = alert else {
-            fatalError()
-        }
-        guard let ui = task.content else {
+        guard case .swiftUI(.alert(let task)) = queue.peek(), let ui = task.content else {
             fatalError()
         }
         return ui

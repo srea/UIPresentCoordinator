@@ -33,7 +33,7 @@ class DemoViewController: UIViewController {
             SystemAlertInterruptSuppression(),
             UserDefineInterruptSuppression.init(objects: [CustomDialogViewController.self])
         ]
-        
+
         watchQueue()
 
         let debugView = DebugView.init {  }

@@ -45,7 +45,7 @@ public struct UIKitWIndowTask: UIKitTask {
     public func show() {
         window.isHidden = false
     }
-    
+
     public func hide() {
         UIWindow._present_coordinator_isHidden_Internal.remove(window.hash)
     }
